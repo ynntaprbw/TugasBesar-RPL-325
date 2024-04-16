@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('komunitas', function (Blueprint $table) {
-            $table->id();
+            $table->id('idKomunitas');
             $table->string('namaKomunitas', 100);
             $table->integer('jumlahAnggota');
-            $table->longText('postingan');
-            $table->unsignedBigInteger('idPengunjung');
-            $table->string('email', 100);
+            $table->longText('tentangKomunitas');
+            $table->longText('aturanKomunitas');
             $table->timestamps();
 
             // Menambahkan foreign key constraint
