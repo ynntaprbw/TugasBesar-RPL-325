@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('idUser');
             // $table->unsignedBigInteger('idAdmin');
             $table->string('media');// Kolom ini untuk menyimpan nama file foto, tidak perlu tipe file submit
-            $table->string('judulArtikel');
+            $table->string('judulArtikel', 20);
             $table->string('sumberArtikel');
             $table->longText('thumbnail');
             $table->dateTime('tanggalUnggah');

@@ -18,13 +18,17 @@ return new class extends Migration
             // $table->integer('idAdmin');
             $table->integer('totalDenda');
             $table->dateTime('tanggalBayarDenda');
-            $table->string('statusDenda');
+            $table->string('statusDenda')->default('Unpaid');
             $table->string('metodePembayaran');
             $table->timestamps();
 
+            
             $table->foreign('idUser')->references('idUser')->on('users');
             // $table->foreign('idAdmin')->references('idAdmin')->on('admin');
             $table->foreign('idPeminjaman')->references('idPeminjaman')->on('peminjaman');
+            
+            
+            $table->checkConstraint('statusDenda IN ("Paid", "Unpaid", "In Verify")');
         });
     }
 
