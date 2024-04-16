@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('idKomunitas');
             $table->string('namaKomunitas', 100);
             $table->integer('jumlahAnggota');
+            $table->string('logoKomunitas');
             $table->longText('tentangKomunitas');
             $table->longText('aturanKomunitas');
             $table->timestamps();
