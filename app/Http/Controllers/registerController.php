@@ -8,21 +8,23 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class registerController extends Controller
+
+
 {
     public function register(Request $request)
     {
         // Validasi data yang dikirim dari form
         $request->validate([
-            'name' => 'required|string|max:255',
+            'namaLengkap' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
         // Membuat user baru
         $user = User::create([
-            'name' => $request->input('name'),
+            'namaLengkap' => $request->input('namaLengkap'),
             'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')), // Mengenkripsi password
+            'password' => Hash::make($request->input('password')),
         ]);
 
         // Log user in setelah registrasi berhasil
