@@ -3,44 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrasi Akun</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="https://img.icons8.com/material-rounded/24/user.png" type="image/x-icon">
 </head>
 <body class="flex justify-center items-center bg-gradient-to-r from-blue-600 to-purple-700 h-screen">
     {{-- Container --}}
-    <div class="rounded-lg bg-white p-12 shadow-lg" style="width: 720px; height: auto;">
+    <div class="rounded-lg bg-white p-6 md:p-12 shadow-lg max-w-xl w-full">
         <h1 class="text-center text-2xl font-bold mb-6">Registrasi Akun</h1>
         <form action="" method="POST">
             {{-- Nama --}}
             <div class="mb-5">
-                <label for="name" class="block mb-2 text-sm font-medium text-black ">
+                <label for="name" class="block mb-2 text-sm font-medium text-black">
                     Nama Lengkap
                 </label>
-                <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nama Lengkap" required />
+                <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nama Lengkap" required />
             </div>
             {{-- Email --}}
             <div class="mb-5">
-                <label for="email" class="block mb-2 text-sm font-medium text-black ">
+                <label for="email" class="block mb-2 text-sm font-medium text-black">
                     Email
                 </label>
-                <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
+                <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
             </div>
             <div class="grid md:grid-cols-2 md:gap-6">
                 {{-- Password --}}
                 <div class="mb-5">
-                    <label for="password" class="block mb-2 text-sm font-medium text-black ">
+                    <label for="password" class="block mb-2 text-sm font-medium text-black">
                         Password
                     </label>
-                    <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                    <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                 </div>
                 {{-- Confirm Password --}}
                 <div class="mb-5">
-                    <label for="password" class="block mb-2 text-sm font-medium text-black ">
+                    <label for="password" class="block mb-2 text-sm font-medium text-black">
                         Konfirmasi Password
                     </label>
-                    <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                    <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                 </div>
-
             </div>
             <div>
                 <p>
