@@ -11,12 +11,14 @@
     {{-- Container --}}
     <div class="rounded-lg bg-white p-6 md:p-12 shadow-lg max-w-xl w-full">
         <h1 class="text-center text-2xl font-bold mb-6">Registrasi Akun</h1>
-        <form action="" method="POST">
+        <form action="{{ route('register') }}" method="POST">
+            @csrf <!-- CSRF Token -->
             {{-- Nama --}}
             <div class="mb-5">
                 <label for="name" class="block mb-2 text-sm font-medium text-black">
                     Nama Lengkap
                 </label>
+                <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap" required />
                 <input type="name" id="name" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nama Lengkap" required />
             </div>
             {{-- Email --}}
@@ -24,6 +26,7 @@
                 <label for="email" class="block mb-2 text-sm font-medium text-black">
                     Email
                 </label>
+                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@flowbite.com" required />
                 <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required />
             </div>
             <div class="grid md:grid-cols-2 md:gap-6">
@@ -32,13 +35,16 @@
                     <label for="password" class="block mb-2 text-sm font-medium text-black">
                         Password
                     </label>
+                    <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                     <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                 </div>
                 {{-- Confirm Password --}}
                 <div class="mb-5">
+                    <label for="password_confirmation" class="block mb-2 text-sm font-medium text-black ">
                     <label for="password" class="block mb-2 text-sm font-medium text-black">
                         Konfirmasi Password
                     </label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                     <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                 </div>
             </div>
