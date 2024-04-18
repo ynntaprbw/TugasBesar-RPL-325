@@ -18,7 +18,7 @@
                 <label for="namaLengkap" class="block mb-2 text-sm font-medium text-black">
                     Nama Lengkap
                 </label>
-                <input type="text" value="{{ Session::get('namaLengkap') }}" name="namaLengkap" id="namaLengkap" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap" required />
+                <input type="text" value="{{ Session::get('namaLengkap') }}" name="namaLengkap" id="namaLengkap" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap" autofocus required />
             </div>
             {{-- Email --}}
             <div class="mb-5">

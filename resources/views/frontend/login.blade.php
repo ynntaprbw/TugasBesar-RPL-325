@@ -10,7 +10,7 @@
 <body class=" bg-gradient-to-r from-blue-600 to-purple-700">
     <div class="container mx-auto px-4 ">
         <div class="flex justify-center items-center min-h-screen">
-            @if(Session()->has("success"))
+            {{-- @if(Session()->has("success"))
                 <div class="alert alert-success">
                     {{session()->get("success")}}
                 </div>
@@ -19,26 +19,22 @@
                 <div class="alert alert-error">
                     {{session()->get("error")}}
                 </div>
-            @endif
+            @endif --}}
             <div class="w-full max-w-md">
-<<<<<<< HEAD
-                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route("register")}}">
-=======
-                <form class="rounded-lg bg-white shadow-md px-8 pt-6 pb-8 mb-4" method="POST" action="/sesi/login">
->>>>>>> 06b38e04c1590611b0b52a747199249fe26a9378
+                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route("login")}}">
                     @csrf
                     <h1 class="text-center text-2xl font-bold mb-6">Login Akun</h1>
                     <div class="mb-5">
                         <label class="block mb-2 text-sm font-medium text-black" for="email">
                             Email
                         </label>
-                        <input class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" value="{{ Session::get('email') }}" placeholder="Email" required>
+                        <input class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="email" value="{{ old }}" placeholder="Email" autofocus required>
                     </div>
                     <div class="mb-6">
                         <label class="block mb-2 text-sm font-medium text-black" for="password">
                             Password
                         </label>
-                        <input class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" id="password" type="password" placeholder="******************" required>
+                        <input class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="password" id="password" type="password" placeholder="******************" required>
                     </div>
                     <div class="my-8 flex items-center justify-between">
                         <button class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" name="submit" type="submit">

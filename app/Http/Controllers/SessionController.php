@@ -3,13 +3,12 @@
 
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Validator;
+
 use Illuminate\Http\Request;
 use App\Models\User; // Pastikan Anda telah membuat model User ini
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
 
 
 class SessionController extends Controller
@@ -18,7 +17,22 @@ class SessionController extends Controller
         return view('frontend.login');
     }
 
-    function login(Request $request) {
+    // public function login(Request $request)
+    // {
+    //     $credentials = $request->only('email', 'password');
+
+    //     if (Auth::attempt($credentials)) {
+    //         // Jika autentikasi berhasil
+    //         $request->session()->regenerate();
+    //         $request->session()->put('idUser', Auth::user()->id);
+    //         return redirect()->intended('/home'); // Ganti '/dashboard' dengan rute yang ingin Anda tuju setelah login berhasil
+    //     }
+
+    //     // Jika autentikasi gagal, kembali ke halaman login dengan pesan error
+    //     return redirect()->route('login')->with('error', 'Email atau kata sandi yang Anda masukkan salah.');
+    // }
+
+    public function login(Request $request) {
         Session::flash('email', $request->email);
         $request->validate([
             'email' => 'required|string|email',
@@ -37,9 +51,10 @@ class SessionController extends Controller
         ];
 
         if(Auth::attempt($infologin)) {
-            return redirect('home')->with('success', Auth::user()->namaLengkap . 'Selamat datang di perpustakaan kami');
+            $request->session()->regenerate();
+            return redirect()->intended('home')->with('success', 'Berhasil Login!');
         } else {
-            return redirect('sesi')->withErrors(['email' => 'Email atau password salah']);
+            return redirect()->route('sesiLogin');
         }
     }
 
