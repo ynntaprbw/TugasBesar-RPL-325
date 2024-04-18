@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrasi Akun</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    @vite('resources/css/app.css')
     <link rel="shortcut icon" href="https://img.icons8.com/material-rounded/24/user.png" type="image/x-icon">
 </head>
 <body class="flex justify-center items-center bg-gradient-to-r from-blue-600 to-purple-700 h-screen">
@@ -18,7 +18,7 @@
                 <label for="namaLengkap" class="block mb-2 text-sm font-medium text-black">
                     Nama Lengkap
                 </label>
-                <input type="text" name="namaLengkap" id="namaLengkap" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap" required />
+                <input type="text" value="{{ Session::get('namaLengkap') }}" name="namaLengkap" id="namaLengkap" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap" required />
             </div>
             {{-- Email --}}
             <div class="mb-5">
