@@ -10,8 +10,18 @@
 <body class="bg-gray-100">
     <div class="container mx-auto px-4">
         <div class="flex justify-center items-center min-h-screen">
+            @if(Session()->has("success"))
+                <div class="alert alert-success">
+                    {{session()->get("success")}}
+                </div>
+            @endif
+            @if(Session()->has("error"))
+                <div class="alert alert-error">
+                    {{session()->get("error")}}
+                </div>
+            @endif
             <div class="w-full max-w-md">
-                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="/sesi/login">
+                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{route("register")}}">
                     @csrf
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">

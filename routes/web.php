@@ -21,4 +21,3 @@ Route::post('/sesi/login', [SessionController::class, 'login'])->name('login');
 Route::get('/sesi/logout', [SessionController::class, 'logout'])->name('logout');
 
 
-

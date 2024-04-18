@@ -71,22 +71,26 @@ class SessionController extends Controller
             'password.min' => 'Password minimal 8 karakter',
         ]);
 
-        $data = [
-            'namaLengkap' => $request->namaLengkap,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ];
-        User::create($data);
+        $data = new User();
+        $data->namaLengkap = $request->namaLengkap;
+        $data->email = $request->email;
+        $data->password = Hash::make($request->password);
+        // $data = [
+        //     'namaLengkap' => $request->namaLengkap,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ];
+        // User::create($data);
 
-        $infologin = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
+        // $infologin = [
+        //     'email' => $request->email,
+        //     'password' => $request->password,
+        // ];
 
-        if(Auth::attempt($infologin)) {
-            return redirect('home')->with('success', Auth::user()->namaLengkap . 'Selamat datang di perpustakaan kami');
+        if($data->save()) {
+            return redirect(route("sesiLogin"))->with('success', 'Asik, Selamat datang di perpustakaan kami');
         } else {
-            return redirect('sesi')->withErrors(['email' => 'Email atau password salah']);
+            return redirect(route("sesiRegister"))->with("error", "Gagal membuat akun");
         }
     }
 }
