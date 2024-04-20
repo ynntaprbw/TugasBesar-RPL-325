@@ -14,10 +14,9 @@
         <div class="flex justify-center items-center min-h-screen">
             <div class="w-full max-w-md">
                 <h1 class="text-4xl text-center mb-8">
-                    Selamat datang di perpustakaan kami
+                    Selamat datang di perpustakaan kami, <br><strong>{{ Auth::user()->namaLengkap }}</strong>
                 </h1>
-                <div class="flex items-center justify-between">
-                    <p>Selamat datang, <strong>{{ Auth::user()->namaLengkap }}</strong></p>
+                <div class="flex items-center justify-center">
                     <a href="{{ route('logout') }}" class="text-red-500 hover:text-red-700">Logout</a>
                 </div>
             </div>
