@@ -1,9 +1,4 @@
-@extends('user.layout')
-
-@section('title', 'Dashboard')
-
-
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 
 
 <html lang="en">
@@ -29,4 +24,4 @@
         </div>
     </div>
 </body>
-</html> --}}
+</html>
