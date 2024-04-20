@@ -1,19 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PageController; 
-use App\Http\Controllers\SessionController; 
+use App\Http\Controllers\ProfileController;
 
-// Route::get('/', function () {
-//     return view('frontend.register');
-// });
+Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
 
-Route::get('/', [PageController::class, 'home']);
-Route::get('/home', [PageController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/dashboard', function () {
+    return view('user.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/sesi/register', [SessionController::class, 'register'])->name('sesiRegister');
-Route::post('/sesi/create', [SessionController::class, 'create'])->name('register');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-Route::get('/sesi', [SessionController::class, 'index'])->name('sesiLogin')->middleware('guest');
-Route::post('/login', [SessionController::class, 'login'])->name('login');
-Route::get('/sesi/logout', [SessionController::class, 'logout'])->name('logout');
+require __DIR__.'/auth.php';
+

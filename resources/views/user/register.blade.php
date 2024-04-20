@@ -18,14 +18,22 @@
                 <label for="namaLengkap" class="block mb-2 text-sm font-medium text-black">
                     Nama Lengkap
                 </label>
-                <input type="text" value="{{ Session::get('namaLengkap') }}" name="namaLengkap" id="namaLengkap" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap" autofocus required />
+                <input type="text" 
+                        :value="old('namaLengkap')" 
+                        name="namaLengkap" 
+                        id="namaLengkap" 
+                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap" required autofocus autocomplete="namaLengkap" />
             </div>
             {{-- Email --}}
             <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium text-black">
                     Email
                 </label>
-                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@flowbite.com" required />
+                <input type="email" 
+                        name="email" 
+                        id="email" 
+                        :value="old('email')" 
+                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@flowbite.com" required autocomplete />
             </div>
             <div class="grid md:grid-cols-2 md:gap-6">
                 {{-- Password --}}
@@ -33,14 +41,20 @@
                     <label for="password" class="block mb-2 text-sm font-medium text-black">
                         Password
                     </label>
-                    <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                    <input type="password" 
+                            name="password" 
+                            id="password" 
+                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                 </div>
                 {{-- Confirm Password --}}
                 <div class="mb-5">
                     <label for="password_confirmation" class="block mb-2 text-sm font-medium text-black">
                         Konfirmasi Password
                     </label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+                    <input type="password" 
+                            name="password_confirmation" 
+                            id="password_confirmation" 
+                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
                 </div>
             </div>
             <div>
@@ -63,7 +77,7 @@
             {{-- Nanti di link ge login page --}}
             <div>
                 <p class="text-center">
-                    Sudah punya akun? <a class="text-indigo-700" href="{{ route('sesiLogin') }}">Masuk</a>
+                    Sudah punya akun? <a class="text-indigo-700" href="{{ route('login') }}">Masuk</a>
                 </p>
             </div>
         </form>
