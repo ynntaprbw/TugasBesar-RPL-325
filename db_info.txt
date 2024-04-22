@@ -1,0 +1,99 @@
+users:
+- idUser BIGINT (20) AUTO INCREMENT -pk
+- email VARCHAR (255)
+- namaLengkap VARCHAR (255)
+- password VARCHAR (10)
+
+kategori:
+- idKategori BIGINT (20) AUTO INCREMENT -pk
+- namaKategori VARCHAR (255) 
+- deskripsi LONGTEXT
+
+buku:
+- idBuku BIGINT (20) AUTO INCREMENT -pk
+- idKategori BIGINT (20) -fk
+- judulBuku VARCHAR (100)
+- namaPenulis VARCHAR (45) 
+- namaPenerbit VARCHAR (100)
+- tahunTerbit YEAR 
+- harga INT (10)
+- stokBuku INT (10)
+- fotoSampul VARCHAR (255)
+- jumlahHalaman INT (10)
+- sinopsis LONGTEXT
+- ISBN VARCHAR (12)
+- bahasa VARCHAR (45)
+
+artikel:
+- idArtikel BIGINT (20) AUTO INCREMENT -pk
+- idUser BIGINT (20) -fk
+- media VARCHAR (255)
+- judulArtikel VACHAR (20)
+- sumberArtikel VARCHAR (255)
+- thumbnail LONGTEXT 
+- tanggalUnggah DATETIME
+
+komunitas:
+- idKomunitas BIGINT (20) AUTO INCREMENT -pk 
+- namaKomunitas VARCHAR (100)
+- jumlahAnggota INT (10)
+- logoKomunitas VARCHAR (255)
+- tentangKomunitas LONGTEXT
+- aturanKomunitas LONGTEXT
+
+ulasan:
+- idUlasan BIGINT (20) AUTO INCREMENT -pk
+- idUser BIGINT (20) -fk
+- idBuku BIGINT (20) -fk
+- rating DECIMAL (8,2)
+- komentar LONGTEXT
+- tanggalUlasan DATETIME
+
+post:
+- idPost BIGINT (20) AUTO INCREMENT -pk
+- idKomunitas BIGINT (20) -fk
+- media VARCHAR (255)
+- judulPost VARCHAR (255)
+- sumberPost VARCHAR (255)
+- thumbnail LONGTEXT
+- tanggalUnggah DATETIME
+
+peminjaman:
+- idPeminjaman BIGINT (20) AUTO INCREMENT -pk
+- idUser BIGINT (20) -fk
+- idBuku BIGINT (20) -fk
+- tanggalPeminjaman DATETIME
+- durasiPeminjaman INT
+- batasPengembalian DATETIME
+- tanggalPengembalian DATETIME
+- statusPeminjaman VARCHAR (255)
+- statusPengambilan VARCHAR (255)
+
+denda:
+- idDenda BIGINT (20) AUTO INCREMENT -pk
+- idPeminjaman BIGINT (20) -fk
+- idUser BIGINT (20) -fk
+- totalDenda INT (10) 
+- tanggalBayarDenda DATETIME
+- statusDenda VARCHAR (255)
+- metodePembayaran VARCHAR (255)
+
+pembelian:
+- idPembelian BIGINT (20) AUTO INCREMENT -pk
+- idUser BIGINT (20) -fk
+- idKeranjang BIGINT (20) -fk
+- tanggalPembayaran DATETIME
+- diskon DECIMAL (8,2)
+- total_bayar INT (10)
+- metodePembayaran VARCHAR (255)
+- statusPembayaran VARCHAR (255)
+- statusPengambilan VARCHAR (255)
+
+keranjang:
+- idKeranjang BIGINT (20) -pk
+- idUser BIGINT (20) -fk
+- idBuku BIGINT (20) -fk
+- idKategori BIGINT (20) -fk
+- idUlasan BIGINT (20) -fk
+- jumlah_buku INT (10) 
+- total_harga INT (10)
