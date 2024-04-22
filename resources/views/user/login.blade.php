@@ -28,20 +28,31 @@
                         <label class="block mb-2 text-sm font-medium text-black" for="email">
                             Email
                         </label>
-                        <input class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+                        <input class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 id="email"
-                                name="email" 
+                                name="email"
                                 :value="old('email')" placeholder="Email" autofocus required>
                     </div>
                     <div class="mb-6">
                         <label class="block mb-2 text-sm font-medium text-black" for="password">
                             Password
                         </label>
-                        <input class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
-                        name="password" 
-                        id="password" 
+                        <input class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        name="password"
+                        id="password"
                         type="password" placeholder="******************" required>
                     </div>
+                    {{-- ALERT --}}
+                    <div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 bg-white dark:text-red-400 dark:border-red-800" role="alert">
+                        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <span class="sr-only">Info</span>
+                        <div>
+                          <span class="font-medium">Danger alert!</span> Change a few things up and try submitting again.
+                        </div>
+                    </div>
+                    {{-- End Of ALert --}}
                     <div class="my-8 flex items-center justify-between">
                         <button class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" name="submit" type="submit">
                             Sign In
