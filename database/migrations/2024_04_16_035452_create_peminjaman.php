@@ -19,9 +19,9 @@ return new class extends Migration
             $table->dateTime('tanggalPeminjaman');
             $table->integer('durasiPeminjaman');
             $table->dateTime('batasPengembalian');
-            $table->dateTime('tanggalPengembalian');
-            $table->string('statusPeminjaman');
-            $table->string('statusPengambilan');
+            $table->dateTime('tanggalPengembalian') -> nullable();
+            $table->enum('statusPeminjaman', ['pending', 'approved', 'returned'])->default('pending');
+            $table->enum('statusPengambilan', ['pending', 'in_progress', 'completed'])->default('pending');
             $table->timestamps();
 
             $table->foreign('idUser')->references('idUser')->on('users');
