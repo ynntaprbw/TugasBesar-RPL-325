@@ -18,7 +18,6 @@ return new class extends Migration
         $table->unsignedBigInteger('idKategori');
         $table->unsignedBigInteger('idUlasan');
         $table->integer('jumlah_buku');
-        $table->string('produkDipilih');
         $table->integer('total_harga');
         $table->timestamps();
 

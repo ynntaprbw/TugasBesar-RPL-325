@@ -21,7 +21,6 @@ return new class extends Migration
             $table->integer('harga');
             $table->integer('stokBuku');
             $table->string('fotoSampul'); // Kolom ini untuk menyimpan nama file foto, tidak perlu tipe file submit
-            $table->integer('idUlasan')->nullable();
             $table->integer('jumlahHalaman');
             $table->longText('sinopsis');
             $table->string('ISBN', 12);
