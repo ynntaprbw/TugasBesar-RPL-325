@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pembelian', function (Blueprint $table) {
             $table->id('idPembelian');
-            $table->unsignedBigInteger('idUser');
+            $table->uuid('idUser');
             // $table->unsignedBiginteger('idAdmin');
             $table->unsignedBigInteger('idKeranjang');
             $table->dateTime('tanggalPembayaran');
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->foreign('idUser')->references('idUser')->on('users');
             // $table->foreign('idAdmin')->references('idAdmin')->on('admin');
             $table->foreign('idKeranjang')->references('idKeranjang')->on('keranjang');
-            
+
         });
     }
 

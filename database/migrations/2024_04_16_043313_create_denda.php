@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('denda', function (Blueprint $table) {
             $table->id('idDenda');
             $table->unsignedBigInteger('idPeminjaman');
-            $table->unsignedBigInteger('idUser');
+            $table->uuid('idUser');
             $table->integer('totalDenda');
             $table->dateTime('tanggalBayarDenda');
             $table->string('statusDenda');
