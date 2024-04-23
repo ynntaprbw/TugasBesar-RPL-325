@@ -3,6 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+
+use Ramsey\Uuid\Uuid;
 
 return new class extends Migration
 {
@@ -12,7 +15,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('idUser');
+            $table->uuid('idUser')->primary();
             $table->string('email')->unique();
             $table->string('namaLengkap');
             $table->string('password');
@@ -28,11 +31,16 @@ return new class extends Migration
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
+            $table->uuid('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
+        });
+
+        // Generate UUID for existing users
+        DB::table('users')->get()->each(function ($user) {
+            DB::table('users')->where('idUser', $user->idUser)->update(['idUser' => Uuid::uuid4()]);
         });
     }
 

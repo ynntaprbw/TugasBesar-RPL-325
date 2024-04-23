@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ulasan', function (Blueprint $table) {
             $table->id('idUlasan');
-            $table->unsignedBigInteger('idUser');
+            $table->uuid('idUser');
             $table->unsignedBigInteger('idBuku');
             $table->decimal('rating');
             $table->longText('komentar');
@@ -29,7 +29,7 @@ return new class extends Migration
      * Reverse the migrations.
      */
 
-     
+
     public function down(): void
     {
         Schema::dropIfExists('ulasan');
