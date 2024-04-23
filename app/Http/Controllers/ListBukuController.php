@@ -14,7 +14,8 @@ class ListBukuController extends Controller
         $bukus = Buku::all();
         
         // Return the books as JSON response
-        return response()->json($bukus);
+        return view('user.dashboard')->with('bukus', $bukus);
+
     }
 
     public function filterByJudul(Request $request)
