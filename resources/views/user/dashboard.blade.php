@@ -59,7 +59,7 @@
                         <ul class="space-y-2 font-medium">
                             {{-- Beranda --}}
                             <li class="">
-                                <a href="{{route('beranda')}}" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i    class="fi-sr-home w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Beranda</span>
                                 </a>

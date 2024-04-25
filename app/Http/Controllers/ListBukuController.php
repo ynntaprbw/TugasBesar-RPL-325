@@ -14,18 +14,32 @@ class ListBukuController extends Controller
         $bukus = Buku::all();
         
         // Return the books as JSON response
-        return response()->json($bukus);
+        return view('user.dashboard')->with('bukus', $bukus);
+
     }
 
-    public function filterByJudul(Request $request)
+    public function filterBuku(Request $request)
     {
-        // Retrieve the 'judul' keyword from the request
-        $keyword = $request->input('judul');
+        // Retrieve the search keyword from the request
+        $keyword = $request->input('keyword');
 
-        // Filter books by title using the 'judul' keyword
-        $bukus = Buku::where('judulBuku', 'like', '%' . $keyword . '%')->get();
+        // Check if the keyword matches any category name
+        $kategoriId = Kategori::where('namaKategori', $keyword)->value('idKategori');
+
+        // Search based on the keyword
+        $bukus = Buku::query();
+        if ($kategoriId) {
+            // If the keyword matches a category, filter books by category
+            $bukus->where('idKategori', $kategoriId);
+        } else {
+            // Otherwise, filter books by title
+            $bukus->where('judulBuku', 'like', '%' . $keyword . '%');
+        }
+
+        // Retrieve the filtered books
+        $filteredBukus = $bukus->get();
         
         // Return the filtered books as JSON response
-        return response()->json($bukus);
+        return response()->json($filteredBukus);
     }
 }
