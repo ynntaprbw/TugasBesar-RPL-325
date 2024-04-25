@@ -10,9 +10,9 @@ Route::middleware('guest')->group(function () {
     });
 });
 
-Route::get('/dashboard', [ListBukuController::class, 'create'])
+Route::get('/beranda', [ListBukuController::class, 'create'])
     ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+    ->name('beranda');
 
 
 Route::middleware(['auth'])->group(function () {
