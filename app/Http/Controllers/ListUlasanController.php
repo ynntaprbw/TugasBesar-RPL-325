@@ -32,9 +32,9 @@ class ListUlasanController extends Controller
             // Filter reviews by judul or kategori
             $ulasans = Ulasan::whereHas('buku', function ($query) use ($keyword) {
                 $query->where('judulBuku', 'like', '%' . $keyword . '%')
-                      ->orWhereHas('kategori', function ($query) use ($keyword) {
-                          $query->where('namaKategori', $keyword);
-                      });
+                    ->orWhereHas('kategori', function ($query) use ($keyword) {
+                        $query->where('namaKategori', $keyword);
+                    });
             })->get();
         }
 
