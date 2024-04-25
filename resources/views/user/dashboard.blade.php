@@ -143,6 +143,18 @@
                 </ul>
             </div>
         </aside>
+        </div>
+
+        {{-- Menampilkan data dari tabel buku --}}
+        <div class="">
+            @foreach($bukus as $buku)
+            <div class="bg-white shadow-md rounded-lg p-4">
+                <p class="">{{ $buku->judulBuku }}</p>
+                <p class="">Penulis: {{ $buku->namaPenulis }}</p>
+                <p class="">Harga: {{ $buku->harga }}</p>
+            </div>
+            @endforeach
+        </div>
     </div>
 
     {{-- Main Content --}}
