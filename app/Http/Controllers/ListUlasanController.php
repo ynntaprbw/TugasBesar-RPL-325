@@ -24,17 +24,29 @@ class ListUlasanController extends Controller
 
     public function filterByRating(Request $request)
     {
-        // Retrieve the 'rating' parameter from the request
-        $rating = $request->input('rating');
+        // Retrieve the search keyword from the request
+        $keyword = $request->input('keyword');
 
-        // Filter reviews by rating
-        $ulasans = Ulasan::where('rating', '>=', $rating)->get();
-        
+        // Check if the keyword is numeric
+        if (is_numeric($keyword)) {
+            // If numeric, assume it's a rating
+            $ulasans = Ulasan::where('rating', '>=', $keyword)->get();
+        } else {
+            // Otherwise, assume it's a judul or kategori
+            // Filter reviews by judul or kategori
+            $ulasans = Ulasan::whereHas('buku', function ($query) use ($keyword) {
+                $query->where('judulBuku', 'like', '%' . $keyword . '%')
+                    ->orWhereHas('kategori', function ($query) use ($keyword) {
+                        $query->where('namaKategori', $keyword);
+                    });
+            })->get();
+        }
+
         // Return the filtered reviews as JSON response
         return response()->json($ulasans);
     }
 
-    public function store(Request $request)
+    public function storeUlasan(Request $request)
     {
         // Validate the request data
         $request->validate([
@@ -43,7 +55,6 @@ class ListUlasanController extends Controller
             'rating' => 'required|numeric|min:0|max:10',
             'komentar' => 'required|string',
             'tanggalUlasan' => 'required|date',
-            // Add more validation rules as needed
         ]);
 
         // Create a new review instance
