@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +8,7 @@
     <link rel="shortcut icon" href="https://img.icons8.com/material-rounded/24/user.png" type="image/x-icon">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel="stylesheet" href="./resources/css/app.css">
 </head>
 <body class="bg-gray-100">
     {{-- Navigation --}}
@@ -49,7 +48,6 @@
             </div>
         </nav>
 
-
         {{-- SIDEBAR --}}
         <aside id="default-sidebar" class="top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 md:relative md:translate-x-0 md:w-16 lg:w-32 xl:w-64" aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-white">
@@ -57,9 +55,9 @@
                     <!-- Sidebar content -->
                     <div class="h-full px-3 py-4 overflow-y-auto bg-white">
                         <ul class="space-y-2 font-medium">
-                            {{-- Beranda --}}
+                            {{-- Sidebar items --}}
                             <li class="">
-                                <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i    class="fi-sr-home w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Beranda</span>
                                 </a>
@@ -120,11 +118,11 @@
                                 <span class="ms-3 transition duration-75">Komunitas</span>
                                 </a>
                             </li>
-                            {{-- Arikel --}}
+                            {{-- Artikel --}}
                             <li class="">
                                 <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i  class="  fi-sr-newspaper w-5 h-5 transition duration-75"></i>
-                                <span class="ms-3 transition duration-75">Arikel</span>
+                                <span class="ms-3 transition duration-75">Artikel</span>
                                 </a>
                             </li>
 
@@ -143,33 +141,11 @@
                 </ul>
             </div>
         </aside>
-        </div>
-
-        {{-- Menampilkan data dari tabel buku --}}
-        <div class="">
-            @foreach($bukus as $buku)
-            <div class="bg-white shadow-md rounded-lg p-4">
-                <p class="">{{ $buku->judulBuku }}</p>
-                <p class="">Penulis: {{ $buku->namaPenulis }}</p>
-                <p class="">Harga: {{ $buku->harga }}</p>
-            </div>
-            @endforeach
-        </div>
     </div>
 
     {{-- Main Content --}}
     <div class="p-4 sm:ml-64 mt-20 z-40 relative">
-        <h1 class="text-3xl">Haloo, <span class="font-bold">{{ Auth::user()->namaLengkap }}</span> selamat datang di <span class="font-bold text-green-950">Libratur</span> !</h1>
-        <br>
-        <h1 class="text-xl">Kamu mau pinjam atau beli buku apa hari ini?</h1>
-        <br>
-        <button type="button" class="text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800">Green</button>
-        <button type="button" class="text-white bg-red-400 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2 dark:bg-red-400 dark:hover:bg-red-700 dark:focus:ring-red-900">Red</button>
-        <button type="button" class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2 dark:focus:ring-yellow-900">Yellow</button>
-        <button type="button" class="text-white bg-purple-400 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 p-2 text-center mb-2 dark:bg-purple-400 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Purple</button>
+        @yield('content')
     </div>
-
-
-
 </body>
 </html>
