@@ -59,7 +59,7 @@
                         <ul class="space-y-2 font-medium">
                             {{-- Beranda --}}
                             <li class="">
-                                <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="{{route('beranda')}}" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i    class="fi-sr-home w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Beranda</span>
                                 </a>
@@ -147,17 +147,7 @@
 
     {{-- Main Content --}}
     <div class="p-4 sm:ml-64 mt-20 z-40 relative">
-        <h1 class="text-3xl">Haloo, <span class="font-bold">{{ Auth::user()->namaLengkap }}</span> selamat datang di <span class="font-bold text-green-950">Libratur</span> !</h1>
-        <br>
-        <h1 class="text-xl">Kamu mau pinjam atau beli buku apa hari ini?</h1>
-        <br>
-        <button type="button" class="text-white bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800">Green</button>
-        <button type="button" class="text-white bg-red-400 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2 dark:bg-red-400 dark:hover:bg-red-700 dark:focus:ring-red-900">Red</button>
-        <button type="button" class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2 dark:focus:ring-yellow-900">Yellow</button>
-        <button type="button" class="text-white bg-purple-400 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 p-2 text-center mb-2 dark:bg-purple-400 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Purple</button>
+        @yield('content')
     </div>
-
-
-
 </body>
 </html>
