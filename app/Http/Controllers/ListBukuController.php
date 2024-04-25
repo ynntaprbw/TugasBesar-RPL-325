@@ -14,7 +14,7 @@ class ListBukuController extends Controller
         $bukus = Buku::all();
         
         // Return the books as JSON response
-        return view('user.dashboard')->with('bukus', $bukus);
+        return view('user.beranda')->with('bukus', $bukus);
 
     }
 
