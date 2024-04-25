@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ListBukuController extends Controller
 {
-    public function showAll()
+    public function create()
     {
         // Retrieve all books
         $bukus = Buku::all();
