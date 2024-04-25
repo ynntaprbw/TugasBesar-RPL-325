@@ -11,7 +11,7 @@
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto px-4">
-        {{-- <div class="flex justify-center items-center min-h-screen">
+        <div class="flex justify-center items-center min-h-screen">
             <div class="w-full max-w-md">
                 <h1 class="text-4xl text-center mb-8">
                     Selamat datang di perpustakaan kami, <br><strong>{{ Auth::user()->namaLengkap }}</strong>
@@ -20,8 +20,9 @@
                     <a href="{{ route('logout') }}" class="text-red-500 hover:text-red-700">Logout</a>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
+        {{-- Menampilkan data dari tabel buku --}}
         <div class="">
             @foreach($bukus as $buku)
             <div class="bg-white shadow-md rounded-lg p-4">
