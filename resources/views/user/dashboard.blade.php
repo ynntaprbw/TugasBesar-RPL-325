@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +8,7 @@
     <link rel="shortcut icon" href="https://img.icons8.com/material-rounded/24/user.png" type="image/x-icon">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel="stylesheet" href="./resources/css/app.css">
 </head>
 <body class="bg-gray-100">
     {{-- Navigation --}}
@@ -49,7 +48,6 @@
             </div>
         </nav>
 
-
         {{-- SIDEBAR --}}
         <aside id="default-sidebar" class="top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 md:relative md:translate-x-0 md:w-16 lg:w-32 xl:w-64" aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-white">
@@ -57,7 +55,7 @@
                     <!-- Sidebar content -->
                     <div class="h-full px-3 py-4 overflow-y-auto bg-white">
                         <ul class="space-y-2 font-medium">
-                            {{-- Beranda --}}
+                            {{-- Sidebar items --}}
                             <li class="">
                                 <a href="" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i    class="fi-sr-home w-5 h-5 transition duration-75"></i>
@@ -120,11 +118,11 @@
                                 <span class="ms-3 transition duration-75">Komunitas</span>
                                 </a>
                             </li>
-                            {{-- Arikel --}}
+                            {{-- Artikel --}}
                             <li class="">
                                 <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i  class="  fi-sr-newspaper w-5 h-5 transition duration-75"></i>
-                                <span class="ms-3 transition duration-75">Arikel</span>
+                                <span class="ms-3 transition duration-75">Artikel</span>
                                 </a>
                             </li>
 

@@ -17,5 +17,8 @@
         "sass": "^1.56.1",
         "tailwindcss": "^3.4.3",
         "vite": "^5.0"
+    },
+    "dependencies": {
+        "@flaticon/flaticon-uicons": "^3.2.1"
     }
 }
