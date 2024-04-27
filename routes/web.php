@@ -14,6 +14,9 @@ Route::get('/beranda', [ListBukuController::class, 'create'])
     ->middleware(['auth', 'verified'])
     ->name('beranda');
 
+Route::get('/buku/search', 'ListBukuController@search')->name('buku.search');
+
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/ulasan', [ListUlasanController::class, 'index']);

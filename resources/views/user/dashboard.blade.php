@@ -15,8 +15,8 @@
     <div class="fixed inset-0">
         {{-- Navbar --}}
         <nav class="sticky bg-white border-gray-200 z-50 w-full ">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
-                <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <div class="mx-10 flex flex-wrap  justify-between  py-4 ">
+                <a href="{{ route('beranda') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <i class= "fi-sr-book scale-125"></i>
                     <span class="self-center text-2xl font-bold whitespace-nowrap text-green-950">Libratur</span>
                 </a>
@@ -25,26 +25,7 @@
                         <i class="fi fi-br-user scale-110 text-white"></i>
                         <h2 class="font-bold text-white">{{ Auth::user()->namaLengkap }}</h2>
                     </div>
-                    <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-                        </svg>
-                    </button>
                 </div>
-                {{-- Search Bar --}}
-                <form class="max-w-full mx-auto md:max-w-4xl lg:max-w-6xl xl:max-w-7xl">
-                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 start-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                            </svg>
-                        </div>
-                        <input type="search" id="default-search" class="w-full block py-3 pl-10 pr-20 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
-                        <button type="submit" class="absolute inset-y-0 right-0 flex items-center justify-center w-20 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm text-white dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-                    </div>
-                </form>
             </div>
         </nav>
 
