@@ -20,8 +20,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ulasan', [ListUlasanController::class, 'index']);
     Route::post('/ulasan/filter', [ListUlasanController::class, 'filterByRating']);
     Route::post('/ulasan/store', [ListUlasanController::class, 'store']);
-    
-    Route::get('/artikel', [ArtikelController::class, 'index']);
+
+    Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel');
 });
 
 

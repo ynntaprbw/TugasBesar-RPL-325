@@ -10,7 +10,7 @@
         <button type="button" class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2 dark:focus:ring-yellow-900">Yellow</button>
         <button type="button" class="text-white bg-purple-400 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 p-2 text-center mb-2 dark:bg-purple-400 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Purple</button>
 
-        <form action="{{ route('buku.search') }}" method="GET" class="my-4 max-w-md mx-auto justify-self-end">
+        <form action="#" method="GET" class="my-4 max-w-md mx-auto justify-self-end">
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
             <div class="relative">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
