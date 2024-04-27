@@ -32,4 +32,5 @@ class Buku extends Model
     {
         return $this->belongsTo(Kategori::class, 'idKategori');
     }
+    
 }
