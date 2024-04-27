@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListBukuController;
 use App\Http\Controllers\ListUlasanController;
+use App\Http\Controllers\ArtikelController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
@@ -19,6 +20,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ulasan', [ListUlasanController::class, 'index']);
     Route::post('/ulasan/filter', [ListUlasanController::class, 'filterByRating']);
     Route::post('/ulasan/store', [ListUlasanController::class, 'store']);
+
+    Route::get('/artikel', [ArtikelController::class, 'index']);
 });
 
 
