@@ -14,7 +14,7 @@ class ArtikelController extends Controller
     public function index()
     {
         $articles = Artikel::all();
-        return response()->json($articles);
+        return view('user.artikel')->with('articles', $articles);
     }
 
     // Method to store a new article
