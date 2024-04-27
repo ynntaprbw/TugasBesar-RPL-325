@@ -12,7 +12,7 @@ class ListBukuController extends Controller
     {
         // Retrieve all books
         $bukus = Buku::all();
-        
+
         // Return the books as JSON response
         return view('user.beranda')->with('bukus', $bukus);
 
@@ -38,8 +38,16 @@ class ListBukuController extends Controller
 
         // Retrieve the filtered books
         $filteredBukus = $bukus->get();
-        
+
         // Return the filtered books as JSON response
         return response()->json($filteredBukus);
     }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $bukus = Buku::where('judulBuku', 'LIKE', "%{$keyword}%")->get();
+        return view('user.beranda', compact('bukus'));
+    }
+
 }

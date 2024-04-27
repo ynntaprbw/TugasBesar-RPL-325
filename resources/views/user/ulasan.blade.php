@@ -21,7 +21,6 @@
                     <div class="ml-4">
                         <div class="text-sm font-medium text-gray-900">{{ $ulasan->namaLengkap }}</div>
                         <div class="text-sm font-small text-gray-900">{{ date('d M Y', strtotime($ulasan->tanggalUlasan)) }}</div>
-
                     </div>
                 </div>
                 <div class="mt-2">
