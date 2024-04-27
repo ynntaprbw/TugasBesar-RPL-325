@@ -14,7 +14,7 @@
     {{-- Navigation --}}
     <div class="fixed inset-0">
         {{-- Navbar --}}
-        <nav class="sticky bg-white border-gray-200 z-50 w-full ">
+        <nav class="sticky bg-white border-gray-200 w-full ">
             <div class="mx-10 flex flex-wrap  justify-between  py-4 ">
                 <a href="{{ route('beranda') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <i class= "fi-sr-book scale-125"></i>
@@ -38,70 +38,70 @@
                         <ul class="space-y-2 font-medium">
                             {{-- Sidebar items --}}
                             <li class="">
-                                <a href="{{ route('beranda') }}" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="{{ route('beranda') }}" class="{{request()->is('beranda')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i    class="fi-sr-home w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Beranda</span>
                                 </a>
                             </li>
                             {{-- Keranjang --}}
                             <li class="">
-                                <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="#" class="{{request()->is('#')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i  class="  fi-sr-shopping-cart w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Keranjang</span>
                                 </a>
                             </li>
                             {{-- Peminjaman Buku --}}
                             <li class="">
-                                <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="#" class="{{request()->is('#')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i  class="  fi-sr-book-bookmark w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Peminjaman Buku</span>
                                 </a>
                             </li>
                             {{-- Pengembalian Buku --}}
                             <li class="">
-                                <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="#" class="{{request()->is('#')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i   class=" fi-sr-reservation-table w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Pengembalian Buku</span>
                                 </a>
                             </li>
                             {{-- Ulasan Buku --}}
                             <li class="">
-                                <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="#" class="{{request()->is('#')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i  class="  fi-sr-comment-alt w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Ulasan Buku</span>
                                 </a>
                             </li>
                             {{-- Pelunasan Denda --}}
                             <li class="">
-                                <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="#" class="{{request()->is('#')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i  class="  fi-sr-wallet w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Pelunasan Denda</span>
                                 </a>
                             </li>
                             {{-- Pembelian Buku --}}
                             <li class="">
-                                <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="#" class="{{request()->is('#')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i  class="  fi-sr-shop w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Pembelian Buku</span>
                                 </a>
                             </li>
                             {{-- Sumbangan Buku --}}
                             <li class="">
-                                <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="#" class="{{request()->is('#')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i  class="  fi-sr-hand-holding-heart w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Sumbangan Buku</span>
                                 </a>
                             </li>
                             {{-- Komunitas --}}
                             <li class="">
-                                <a href="#" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="#" class="{{request()->is('#')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i  class="  fi-sr-users-alt w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Komunitas</span>
                                 </a>
                             </li>
                             {{-- Artikel --}}
                             <li class="">
-                                <a href="{{ route('artikel') }}" class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="{{ route('artikel') }}" class="{{request()->is('artikel')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i  class="  fi-sr-newspaper w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Artikel</span>
                                 </a>
@@ -125,7 +125,7 @@
     </div>
 
     {{-- Main Content --}}
-    <div class="p-4 sm:ml-64 mt-20 z-40 relative">
+    <div class="p-4 sm:ml-64 mt-20 z-50 relative">
         @yield('content')
     </div>
 </body>
