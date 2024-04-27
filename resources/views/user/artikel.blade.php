@@ -2,7 +2,7 @@
 @section('content')
 <div>
     @foreach($articles as $artikel)
-    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    {{-- <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
         </a>
@@ -13,6 +13,17 @@
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
             </svg>
         </a>
+    </div> --}}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <img src="{{ $artikel->thumbnail }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ $artikel->judulArtikel }}</h5>
+                <p class="card-text">Ditulis oleh: {{ $artikel->user->name }}</p>
+                <p class="card-text">Sumber: {{ $artikel->sumberArtikel }}</p>
+                <a href="#" class="btn btn-primary">Baca Artikel</a>
+            </div>
+        </div>
     </div>
     @endforeach
 </div>
