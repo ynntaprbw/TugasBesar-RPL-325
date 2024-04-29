@@ -1,5 +1,5 @@
 <?php
- 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListBukuController;
 use App\Http\Controllers\ListUlasanController;
@@ -21,7 +21,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/ulasan/filter', [ListUlasanController::class, 'filterByRating']);
     Route::post('/ulasan/store', [ListUlasanController::class, 'store']);
 
-    Route::get('/detailBuku/{id}', [ListBukuController::class, 'getById']);
+    Route::get('/detailBuku/{id}', [ListBukuController::class, 'getById'])->name('detailBuku');
 
 
     Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel');
