@@ -66,7 +66,7 @@
                             </li>
                             {{-- Ulasan Buku --}}
                             <li class="">
-                                <a href="#" class="{{request()->is('#')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                                <a href="{{ route('ulasan') }}" class="{{request()->is('ulasan')? 'bg-indigo-600 text-white' : ''}} flex items-center p-2 text-gray-500 rounded-lg hover:text-white  hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                                 <i  class="  fi-sr-comment-alt w-5 h-5 transition duration-75"></i>
                                 <span class="ms-3 transition duration-75">Ulasan Buku</span>
                                 </a>
