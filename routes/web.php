@@ -22,7 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/ulasan/store', [ListUlasanController::class, 'store']);
 
     Route::get('/detailBuku/{id}', [ListBukuController::class, 'getById'])->name('detailBuku');
-
+ 
 
     Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel');
 });
