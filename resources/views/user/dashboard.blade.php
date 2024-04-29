@@ -12,7 +12,7 @@
 </head>
 <body class="bg-gray-100">
     {{-- Navigation --}}
-    <div class="fixed inset-0">
+    <div class="fixed inset-0 z-50">
         {{-- Navbar --}}
         <nav class="sticky bg-white border-gray-200 w-full ">
             <div class="mx-10 flex flex-wrap  justify-between  py-4 ">
@@ -125,7 +125,7 @@
     </div>
 
     {{-- Main Content --}}
-    <div class="p-4 sm:ml-64 mt-20 z-50 relative">
+    <div class="p-4 sm:ml-64 mt-20 z-40 relative">
         @yield('content')
     </div>
 </body>
