@@ -54,7 +54,7 @@ class ListBukuController extends Controller
     {
         $buku = Buku::find($id);
         if ($buku) {
-            return response()->json($buku);
+            return view('user.detailBuku')->with('buku', $buku);
         } else {
             return response()->json(['message' => 'Buku tidak ditemukan'], 404);
         }
