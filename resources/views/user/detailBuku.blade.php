@@ -8,17 +8,17 @@
     <div class="flex flex-row gap-20">
         <img src="" alt="img Buku">
         <div class="">
-            <h1>Judul Buku</h1>
-            <h2>Author</h2>
-            <h3>kategori</h3>
+            <h1>Judul Buku: {{ $buku->judulBuku }}</h1>
+            <h2>Author: {{ $buku->namaPenulis }}</h2>
+            <h3>kategori: {{ $buku->kategori->namaKategori }}</h3>
             <div>
-                Rating
+                Rating: 
             </div>
-            <h2>Harga</h2>
+            <h2>Harga: {{ $buku->harga }}</h2>
             <br>
             <div>
                 <h3>Deskripsi</h3>
-                <p>isi deskripsi</p>
+                <p>{{ $buku->sinopsis }}</p>
             </div>
             <br>
             <div>
@@ -26,17 +26,17 @@
                 <div class="flex gap-8">
                     <ul>
                         <li>ISBN</li>
-                        <li>(ISBN)</li>
+                        <li>{{ $buku->ISBN }}</li>
                         <li>Jumlah Halaman</li>
-                        <li>(halaman)</li>
-                        <li>Tanggal Terbit</li>
-                        <li>(tanggal)</li>
+                        <li>{{ $buku->jumlahHalaman }}</li>
+                        <li>Tahun Terbit</li>
+                        <li>{{ $buku->tahunTerbit }}</li>
                         <li>Bahasa</li>
-                        <li>(bahasa)</li>
+                        <li>{{ $buku->bahasa }}</li>
                     </ul>
                     <ul>
                         <li>Penerbit</li>
-                        <li>(penerbit)</li>
+                        <li>{{ $buku->namaPenerbit }}</li>
                         <li>Berat</li>
                         <li>(berat)</li>
                         <li>Panjang</li>

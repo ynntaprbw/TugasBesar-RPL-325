@@ -50,9 +50,14 @@ class ListBukuController extends Controller
         return view('user.beranda', compact('bukus'));
     }
 
+    public function kategori()
+{
+    return $this->belongsTo(Kategori::class, 'idKategori');
+}
+
     public function getById($id)
     {
-        $buku = Buku::find($id);
+        $buku = Buku::with('kategori')->find($id);
         if ($buku) {
             return view('user.detailBuku')->with('buku', $buku);
         } else {
