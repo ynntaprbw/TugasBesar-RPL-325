@@ -10,6 +10,7 @@ use App\Models\Kategori;
 class Buku extends Model
 {
     protected $table = 'buku'; // Assuming your table name is 'buku'
+    protected $primaryKey = 'idBuku';
 
     protected $fillable = [
         'idBuku',

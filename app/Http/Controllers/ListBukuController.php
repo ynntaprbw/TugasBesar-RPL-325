@@ -50,4 +50,14 @@ class ListBukuController extends Controller
         return view('user.beranda', compact('bukus'));
     }
 
+    public function getById($id)
+    {
+        $buku = Buku::find($id);
+        if ($buku) {
+            return response()->json($buku);
+        } else {
+            return response()->json(['message' => 'Buku tidak ditemukan'], 404);
+        }
+    }
+
 }
