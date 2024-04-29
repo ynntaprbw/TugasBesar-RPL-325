@@ -17,7 +17,7 @@ Route::get('/beranda', [ListBukuController::class, 'create'])
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/ulasan', [ListUlasanController::class, 'index']);
+    Route::get('/ulasan', [ListUlasanController::class, 'index'])->name('ulasan');
     Route::post('/ulasan/filter', [ListUlasanController::class, 'filterByRating']);
     Route::post('/ulasan/store', [ListUlasanController::class, 'store']);
 
