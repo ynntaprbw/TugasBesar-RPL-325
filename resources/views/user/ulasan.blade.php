@@ -1,17 +1,16 @@
-<!DOCTYPE html>
+@extends('user.dashboard')
+@section('content')
+<div class="grid grid-cols-4 gap-4">
+    @foreach($ulasans as $ulasan)
+    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-white dark:border-gray-700">
+        <p>User: <span class="text-blue-700 font-bold">{{$ulasan->namaLengkap}}</span></p>
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">{{ $ulasan->komentar }}</h5>
+        </a>
+        <p class="text-xl">Rating: <span class="text-blue-700 font-bold">{{ $ulasan->rating }}</span></p>
+        <p class="text-black my-2">Tanggal: {{ $ulasan->tanggalUlasan }}</p>
 
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    @vite('resources/css/app.css')
-    <link rel="shortcut icon" href="https://img.icons8.com/material-rounded/24/user.png" type="image/x-icon">
-</head>
-<body class="bg-gray-100">
-    <div class="container mx-auto px-4">
-        
     </div>
-</body>
-</html>
+    @endforeach
+</div>
+@endsection
