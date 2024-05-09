@@ -12,9 +12,10 @@ class ListBukuController extends Controller
     {
         // Retrieve all books
         $bukus = Buku::all();
-        
+
         // Return the books as JSON response
-        return response()->json($bukus);
+        return view('user.beranda')->with('bukus', $bukus);
+
     }
 
     public function filterBuku(Request $request)
@@ -37,8 +38,31 @@ class ListBukuController extends Controller
 
         // Retrieve the filtered books
         $filteredBukus = $bukus->get();
-        
+
         // Return the filtered books as JSON response
         return response()->json($filteredBukus);
     }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $bukus = Buku::where('judulBuku', 'LIKE', "%{$keyword}%")->get();
+        return view('user.beranda', compact('bukus'));
+    }
+
+    public function kategori()
+{
+    return $this->belongsTo(Kategori::class, 'idKategori');
+}
+
+    public function getById($id)
+    {
+        $buku = Buku::with('kategori')->find($id);
+        if ($buku) {
+            return view('user.detailBuku')->with('buku', $buku);
+        } else {
+            return response()->json(['message' => 'Buku tidak ditemukan'], 404);
+        }
+    }
+
 }

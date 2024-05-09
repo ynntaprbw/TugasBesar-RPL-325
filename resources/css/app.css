@@ -1,3 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 04/01/2019 13:45
+  	*/
+
+
+      @font-face {
+        font-family: "Flaticon";
+        src: url("../fonts/flaticon/font/Flaticon.eot");
+        src: url("../fonts/flaticon/font/Flaticon.eot?#iefix") format("embedded-opentype"),
+             url("../fonts/flaticon/font/Flaticon.woff") format("woff"),
+             url("../fonts/flaticon/font/Flaticon.ttf") format("truetype"),
+             url("../fonts/flaticon/font/Flaticon.svg#Flaticon") format("svg");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @media screen and (-webkit-min-device-pixel-ratio:0) {
+        @font-face {
+          font-family: "Flaticon";
+          src: url("../fonts/flaticon/font/Flaticon.svg#Flaticon") format("svg");
+        }
+      }
+
+      [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+      [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+        font-family: Flaticon;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .flaticon-wedding-car:before { content: "\f100"; }
+      .flaticon-car:before { content: "\f101"; }
+      .flaticon-suv:before { content: "\f102"; }
+      .flaticon-transportation:before { content: "\f103"; }
+      .flaticon-route:before { content: "\f104"; }
+      .flaticon-handshake:before { content: "\f105"; }
+      .flaticon-rent:before { content: "\f106"; }
+      .flaticon-dashboard:before { content: "\f107"; }
+      .flaticon-pistons:before { content: "\f108"; }
+      .flaticon-car-seat:before { content: "\f109"; }
+      .flaticon-backpack:before { content: "\f10a"; }
+      .flaticon-diesel:before { content: "\f10b"; }
+
+      /* Custom Utility Classes */
+.btn-green {
+    @apply text-gray-900 bg-green-400 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2 dark:bg-green-400 dark:hover:bg-green-700 dark:focus:ring-green-800;
+}
+
+.btn-red {
+    @apply text-gray-900 bg-red-400 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2 dark:bg-red-400 dark:hover:bg-red-700 dark:focus:ring-red-900;
+}
+
+.btn-yellow {
+    @apply text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 p-2 text-center me-2 mb-2 dark:focus:ring-yellow-900;
+}
+
+.btn-purple {
+    @apply text-white bg-purple-400 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 p-2 text-center mb-2 dark:bg-purple-400 dark:hover:bg-purple-700 dark:focus:ring-purple-900;
+}
+
+.btn-blue {
+    @apply text-gray-100 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+}

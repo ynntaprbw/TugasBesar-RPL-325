@@ -12,10 +12,14 @@ class ListUlasanController extends Controller
     public function index()
     {
         // Retrieve all reviews
-        $ulasans = Ulasan::all();
+        // Retrieve all reviews with associated book information
+        $ulasans = Ulasan::join('buku', 'ulasan.idBuku', '=', 'buku.idBuku')
+                     ->join('users', 'ulasan.idUser', '=', 'users.idUser')
+                     ->select('ulasan.*', 'buku.judulBuku as judulBuku', 'users.namaLengkap as namaLengkap')
+                     ->get();
         
-        // Return the reviews as JSON response
-        return response()->json($ulasans);
+        // return response()->json($ulasans);
+        return view('user.ulasan')->with('ulasans', $ulasans);
     }
 
     public function filterByRating(Request $request)
