@@ -15,7 +15,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary()->default('');
+            $table->uuid('id')->primary();
             $table->string('email')->unique();
             $table->string('nama');
             $table->string('password');
@@ -40,8 +40,9 @@ return new class extends Migration
         });
 
         // Generate UUID for existing users
-        DB::table('users')->get()->each(function ($user) {
-            DB::table('users')->where('idUser', $user->idUser)->update(['idUser' => Uuid::uuid4()]);
+        DB::table('users')->whereNull('id')->get()->each(function ($user) {
+            DB::table('users')->where('id', $user->id)->update(['id' => Uuid::uuid4()]);
+
         });
     }
 
@@ -55,3 +56,4 @@ return new class extends Migration
         Schema::dropIfExists('sessions');
     }
 };
+

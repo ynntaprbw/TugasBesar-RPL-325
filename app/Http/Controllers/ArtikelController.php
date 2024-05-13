@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Buku;
 use App\Models\Kategori;
 use App\Models\Artikel;
-use App\Models\Customer;
+use App\Models\User;
 
 class ArtikelController extends Controller
 {
@@ -22,7 +22,7 @@ class ArtikelController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'id' => 'required|exists:customers,id',
+            'id' => 'required|exists:users,id',
             'media' => 'required|string|max:255',
             'judulArtikel' => 'required|string|max:255',
             'sumberArtikel' => 'required|string|max:255',
@@ -49,7 +49,7 @@ class ArtikelController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'id' => 'exists:customers,id',
+            'id' => 'exists:users,id',
             'media' => 'string|max:255',
             'judulArtikel' => 'string|max:255',
             'sumberArtikel' => 'string|max:255',
