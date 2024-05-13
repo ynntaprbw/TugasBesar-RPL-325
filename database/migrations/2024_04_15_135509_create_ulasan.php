@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('ulasan', function (Blueprint $table) {
             $table->id('idUlasan');
-            $table->uuid('idCustomer');
+            $table->uuid('id');
             $table->unsignedBigInteger('idBuku');
             $table->decimal('rating');
             $table->longText('komentar');
             $table->dateTime('tanggalUlasan');
             $table->timestamps();
 
-            $table->foreign('idCustomer')->references('idCustomer')->on('customers');
+            $table->foreign('id')->references('id')->on('users');
             $table->foreign('idBuku')->references('idBuku')->on('buku');
         });
     }

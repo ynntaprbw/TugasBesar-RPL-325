@@ -15,14 +15,14 @@
             @csrf <!-- CSRF Token -->
             {{-- Nama --}}
             <div class="mb-5">
-                <label for="namaLengkap" class="block mb-2 text-sm font-medium text-black">
+                <label for="z" class="block mb-2 text-sm font-medium text-black">
                     Nama Lengkap
                 </label>
                 <input type="text"
-                        :value="old('namaLengkap')"
-                        name="namaLengkap"
-                        id="namaLengkap"
-                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap" required autofocus autocomplete="namaLengkap" />
+                        :value="old('nama')"
+                        name="nama"
+                        id="nama"
+                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap" required autofocus autocomplete="nama" />
             </div>
             {{-- Email --}}
             <div class="mb-5">

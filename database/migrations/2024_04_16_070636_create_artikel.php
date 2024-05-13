@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('artikel', function (Blueprint $table) {
             $table->id('idArtikel');
-            $table->uuid('idCustomer');
+            $table->uuid('id');
             // $table->unsignedBigInteger('idAdmin');
             $table->string('media');// Kolom ini untuk menyimpan nama file foto, tidak perlu tipe file submit
             $table->string('judulArtikel', 20);
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->dateTime('tanggalUnggah');
             $table->timestamps();
 
-            $table->foreign('idCustomer')->references('idCustomer')->on('customers');
+            $table->foreign('id')->references('id')->on('users');
             // $table->foreign('idAdmin')->references('idAdmin')->on('Admin');
         });
     }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('peminjaman', function (Blueprint $table) {
             $table->id('idPeminjaman');
-            $table->uuid('idCustomer');
+            $table->uuid('id');
             // $table->integer('idAdmin');
             $table->unsignedBigInteger('idBuku');
             $table->dateTime('tanggalPeminjaman');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->enum('statusPengambilan', ['pending', 'taken'])->default('pending');
             $table->timestamps();
 
-            $table->foreign('idCustomer')->references('idCustomer')->on('customers');
+            $table->foreign('id')->references('id')->on('users');
             // $table->foreign('idAdmin')->references('idAdmin')->on('admin');
             $table->foreign('idBuku')->references('idBuku')->on('buku');
         });
