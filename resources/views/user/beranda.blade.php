@@ -1,7 +1,7 @@
 @extends('user.dashboard')
 @section('content')
 <div>
-    <h1 class="text-3xl">Haloo, <span class="font-bold">{{ Auth::user()->namaLengkap }}</span> selamat datang di <span class="font-bold text-green-950">Libratur</span> !</h1>
+    <h1 class="text-3xl">Haloo, <span class="font-bold">{{ Auth::user()->name }}</span> selamat datang di <span class="font-bold text-green-950">Libratur</span> !</h1>
         <br>
         <h1 class="text-xl">Kamu mau pinjam atau beli buku apa hari ini?</h1>
         <br>
