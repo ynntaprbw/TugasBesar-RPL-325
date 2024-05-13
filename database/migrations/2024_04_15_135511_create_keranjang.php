@@ -13,7 +13,7 @@ return new class extends Migration
 {
     Schema::create('keranjang', function (Blueprint $table) {
         $table->id('idKeranjang');
-        $table->uuid('idUser');
+        $table->uuid('idCustomer');
         $table->unsignedBigInteger('idBuku');
         $table->unsignedBigInteger('idKategori');
         $table->unsignedBigInteger('idUlasan');
@@ -21,7 +21,7 @@ return new class extends Migration
         $table->integer('total_harga');
         $table->timestamps();
 
-        $table->foreign('idUser')->references('idUser')->on('users');
+        $table->foreign('idCustomer')->references('idCustomer')->on('customers');
         $table->foreign('idBuku')->references('idBuku')->on('buku');
         $table->foreign('idKategori')->references('idKategori')->on('kategori');
         $table->foreign('idUlasan')->references('idUlasan')->on('ulasan');

@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('denda', function (Blueprint $table) {
             $table->id('idDenda');
             $table->unsignedBigInteger('idPeminjaman');
-            $table->uuid('idUser');
+            $table->uuid('idCustomer');
             $table->integer('totalDenda');
             $table->dateTime('tanggalBayarDenda');
             $table->string('statusDenda');
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Adding foreign key constraints
-            $table->foreign('idUser')->references('idUser')->on('users');
+            $table->foreign('idCustomer')->references('idCustomer')->on('customers');
             $table->foreign('idPeminjaman')->references('idPeminjaman')->on('peminjaman');
         });
 
