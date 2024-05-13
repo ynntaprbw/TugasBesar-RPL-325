@@ -66,7 +66,7 @@
                 <div class="flex items-center space-x-3">
                     <div class="flex space-x-5 p-3 bg-indigo-500 rounded-md">
                         <i class="fi fi-br-user scale-110 text-white"></i>
-                        <h2 class="font-bold text-white">{{ Auth::user()->namaLengkap }}</h2>
+                        <h2 class="font-bold text-white">{{ Auth::user()->nama }}</h2>
                     </div>
                 </div>
             </div>
