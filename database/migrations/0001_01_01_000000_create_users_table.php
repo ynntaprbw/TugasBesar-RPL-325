@@ -1,5 +1,3 @@
-<?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,9 +13,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary()->default('');
+            $table->uuid('id')->primary();
             $table->string('email')->unique();
-            $table->string('nama');
+            $table->string('name')->nullable();
             $table->string('password');
             $table->string('role')->default('user');
             $table->rememberToken();
@@ -39,10 +37,6 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
 
-        // Generate UUID for existing users
-        DB::table('users')->get()->each(function ($user) {
-            DB::table('users')->where('idUser', $user->idUser)->update(['idUser' => Uuid::uuid4()]);
-        });
     }
 
     /**
