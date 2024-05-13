@@ -15,7 +15,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->uuid('idCustomer')->primary();
+            $table->uuid('idCustomer')->primary()->default('');
             $table->string('email')->unique();
             $table->string('namaLengkap');
             $table->string('password');
@@ -23,20 +23,20 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
+        // Schema::create('password_reset_tokens', function (Blueprint $table) {
+        //     $table->string('email')->primary();
+        //     $table->string('token');
+        //     $table->timestamp('created_at')->nullable();
+        // });
 
-        Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->uuid('customer_id')->nullable()->index();
-            $table->string('ip_address', 45)->nullable();
-            $table->text('customer_agent')->nullable();
-            $table->longText('payload');
-            $table->integer('last_activity')->index();
-        });
+        // Schema::create('sessions', function (Blueprint $table) {
+        //     $table->string('id')->primary();
+        //     $table->uuid('customer_id')->nullable()->index();
+        //     $table->string('ip_address', 45)->nullable();
+        //     $table->text('customer_agent')->nullable();
+        //     $table->longText('payload');
+        //     $table->integer('last_activity')->index();
+        // });
 
         // Generate UUID for existing customers
         DB::table('customers')->get()->each(function ($customer) {

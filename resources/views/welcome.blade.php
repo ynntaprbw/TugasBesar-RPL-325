@@ -4,39 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Librartur - Landing Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 <body class="bg-slate-900">
-    <div class="container mx-auto px-4 h-screen  ">
-        <div class="grid justify-center items-center h-full">
-            <div class="flex justify-center  items-center ">
-                <div class="text-center">
-                    <h1 class="text-4xl font-bold text-white">Selamat Datang di Aplikasi Kami</h1>
-                    <p class="text-lg text-gray-300 mt-4">Silakan login atau daftar untuk melanjutkan</p>
-                </div>
-            </div>
-    
-    @if (Route::has('login'))
-                            <div class="flex justify-center items-center mt-4">
-                                <a
-                                    href="{{ route('login') }}"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
-                                >
-                                    Log in
-                                </a>
 
-                                @if (Route::has('register'))
-                                    <a
-                                        href="{{ route('register') }}"
-                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                                    >
-                                        Register
-                                    </a>
-                                @endif
-                            </div>
-                        @endif
-    </div>    
+
+    <section class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
+        <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Selamat Datang di Aplikasi Kami</h1>
+            <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Silakan login atau daftar untuk melanjutkan</p>
+            @if (Route::has('login'))
+                <div class="flex justify-center items-center mt-4">
+                    <a
+                        href="{{ route('login') }}"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+                    >
+                        Log in
+                    </a>
+
+                    @if (Route::has('register'))
+                        <a
+                            href="{{ route('register') }}"
+                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                        >
+                            Register
+                        </a>
+                    @endif
+                </div>
+            @endif
+        </div>
+    </section>
 </body>
 </html>

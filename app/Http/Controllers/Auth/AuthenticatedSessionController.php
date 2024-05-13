@@ -16,7 +16,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('customer.login');
+        return view('user.login');
     }
 
     /**
@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
         return redirect()->intended(route('beranda', absolute: false));
     }
 
-    
+
 
     /**
      * Destroy an authenticated session.
@@ -39,7 +39,7 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
-        
+
 
         $request->session()->invalidate();
 
