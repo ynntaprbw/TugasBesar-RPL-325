@@ -15,9 +15,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary()->default(Uuid::uuid4());
+            $table->uuid('id')->primary();
             $table->string('email')->unique();
-            $table->string('nama');
+            $table->string('nama')->nullable();
             $table->string('password');
             $table->string('role')->default('user');
             $table->rememberToken();
@@ -39,11 +39,7 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
 
-        // Generate UUID for existing users
-        DB::table('users')->whereNull('id')->get()->each(function ($user) {
-            DB::table('users')->where('id', $user->id)->update(['id' => Uuid::uuid4()]);
 
-        });
     }
 
     /**
