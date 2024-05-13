@@ -53,6 +53,11 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('keranjang') }}" class="{{ request()->is('keranjang') ? 'bg-indigo-600 text-white' : '' }} flex items-center p-2 text-gray-500 rounded-lg hover:text-white hover:bg-gray-100 dark:hover:bg-indigo-600 group">
+                            <span>Keranjang</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('logout') }}" class="flex items-center p-2 text-white hover:text-white rounded-lg dark:bg-red-500 hover:bg-red-600 group">
                             <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4"/>
