@@ -37,6 +37,7 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
 
+
     }
 
     /**
@@ -49,3 +50,4 @@ return new class extends Migration
         Schema::dropIfExists('sessions');
     }
 };
+

@@ -17,7 +17,7 @@ class ListUlasanController extends Controller
                      ->join('users', 'ulasan.id', '=', 'users.id')
                      ->select('ulasan.*', 'buku.judulBuku as judulBuku', 'users.nama as nama')
                      ->get();
-        
+
         // return response()->json($ulasans);
         return view('user.ulasan')->with('ulasans', $ulasans);
     }

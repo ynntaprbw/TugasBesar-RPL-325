@@ -19,9 +19,9 @@
                     Nama Lengkap
                 </label>
                 <input type="text"
-                        :value="old('nama')"
-                        name="nama"
-                        id="nama"
+                        :value="old('name')"
+                        name="name"
+                        id="name"
                         class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nama Lengkap" required autofocus autocomplete="nama" />
             </div>
             {{-- Email --}}
