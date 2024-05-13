@@ -10,7 +10,7 @@ class Artikel extends Model
     protected $table = 'artikel'; // Assuming your table name is 'artikel'
 
     protected $fillable = [
-        'idUser',
+        'idCustomer',
         'media',
         'judulArtikel',
         'sumberArtikel',
@@ -19,8 +19,8 @@ class Artikel extends Model
     ];
 
     // Define relationships
-    public function user()
+    public function customer()
     {
-        return $this->belongsTo(User::class, 'idUser');
+        return $this->belongsTo(Customer::class, 'idCustomer');
     }
 }

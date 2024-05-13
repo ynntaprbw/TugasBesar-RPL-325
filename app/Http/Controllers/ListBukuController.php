@@ -14,7 +14,7 @@ class ListBukuController extends Controller
         $bukus = Buku::all();
 
         // Return the books as JSON response
-        return view('user.beranda')->with('bukus', $bukus);
+        return view('customer.beranda')->with('bukus', $bukus);
 
     }
 
@@ -47,7 +47,7 @@ class ListBukuController extends Controller
     {
         $keyword = $request->input('keyword');
         $bukus = Buku::where('judulBuku', 'LIKE', "%{$keyword}%")->get();
-        return view('user.beranda', compact('bukus'));
+        return view('customer.beranda', compact('bukus'));
     }
 
     public function kategori()
@@ -59,7 +59,7 @@ class ListBukuController extends Controller
     {
         $buku = Buku::with('kategori')->find($id);
         if ($buku) {
-            return view('user.detailBuku')->with('buku', $buku);
+            return view('customer.detailBuku')->with('buku', $buku);
         } else {
             return response()->json(['message' => 'Buku tidak ditemukan'], 404);
         }

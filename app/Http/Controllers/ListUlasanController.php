@@ -14,12 +14,12 @@ class ListUlasanController extends Controller
         // Retrieve all reviews
         // Retrieve all reviews with associated book information
         $ulasans = Ulasan::join('buku', 'ulasan.idBuku', '=', 'buku.idBuku')
-                     ->join('users', 'ulasan.idUser', '=', 'users.idUser')
-                     ->select('ulasan.*', 'buku.judulBuku as judulBuku', 'users.namaLengkap as namaLengkap')
+                     ->join('customers', 'ulasan.idCustomer', '=', 'customers.idCustomer')
+                     ->select('ulasan.*', 'buku.judulBuku as judulBuku', 'customers.namaLengkap as namaLengkap')
                      ->get();
         
         // return response()->json($ulasans);
-        return view('user.ulasan')->with('ulasans', $ulasans);
+        return view('customer.ulasan')->with('ulasans', $ulasans);
     }
 
     public function filterByRating(Request $request)
@@ -50,7 +50,7 @@ class ListUlasanController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'idUser' => 'required|exists:users,id',
+            'idCustomer' => 'required|exists:customers,id',
             'idBuku' => 'required|exists:buku,idBuku',
             'rating' => 'required|numeric|min:0|max:10',
             'komentar' => 'required|string',
@@ -59,7 +59,7 @@ class ListUlasanController extends Controller
 
         // Create a new review instance
         $ulasan = new Ulasan();
-        $ulasan->idUser = $request->input('idUser');
+        $ulasan->idCustomer = $request->input('idCustomer');
         $ulasan->idBuku = $request->input('idBuku');
         $ulasan->rating = $request->input('rating');
         $ulasan->komentar = $request->input('komentar');
