@@ -14,7 +14,7 @@ class Ulasan extends Model
     protected $table = 'ulasan';
 
     protected $fillable = [
-        'idCustomer',
+        'id',
         'idBuku',
         'rating',
         'komentar',

@@ -10,7 +10,7 @@ class Artikel extends Model
     protected $table = 'artikel'; // Assuming your table name is 'artikel'
 
     protected $fillable = [
-        'idCustomer',
+        'id',
         'media',
         'judulArtikel',
         'sumberArtikel',

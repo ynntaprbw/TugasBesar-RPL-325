@@ -22,13 +22,26 @@ class KeranjangController extends Controller
     {
         $buku = Buku::findOrFail($idBuku);
 
-        $keranjang = new Keranjang();
-        $keranjang->idBuku = $buku->id;
-        $keranjang->idKategori = $buku->idKategori;
-        $keranjang->id = session('id'); // Menggunakan session user_id
-        $keranjang->jumlah_buku = $request->input('quantity', 1);
-        $keranjang->total_harga = $buku->harga * $keranjang->jumlah_buku;
-        $keranjang->save();
+        // Cek apakah buku sudah ada di keranjang
+        $keranjang = Keranjang::where('idBuku', $buku->idBuku)
+                                ->where('id', auth()->id())
+                                ->first();
+
+        if ($keranjang) {
+            // Jika buku sudah ada di keranjang, update jumlah buku
+            $keranjang->jumlah_buku += $request->input('quantity', 1);
+            $keranjang->total_harga = $buku->harga * $keranjang->jumlah_buku;
+            $keranjang->save();
+        } else {
+            // Jika buku belum ada di keranjang, tambahkan ke keranjang
+            $keranjang = new Keranjang();
+            $keranjang->idBuku = $buku->idBuku;
+            $keranjang->idKategori = $buku->idKategori;
+            $keranjang->id = auth()->id();
+            $keranjang->jumlah_buku = $request->input('quantity', 1);
+            $keranjang->total_harga = $buku->harga * $keranjang->jumlah_buku;
+            $keranjang->save();
+        }
 
         return redirect()->back()->with('success');
     }
@@ -40,7 +53,7 @@ class KeranjangController extends Controller
         $keranjang->total_harga = $keranjang->buku->harga * $request->input('quantity');
         $keranjang->save();
 
-        return redirect()->back()->with('success', 'Kuantitas produk dalam keranjang berhasil diperbarui.');
+        return redirect()->back()->with('success');
     }
 
     public function destroy($id)
@@ -48,6 +61,6 @@ class KeranjangController extends Controller
         $keranjang = Keranjang::findOrFail($id);
         $keranjang->delete();
 
-        return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang.');
+        return redirect()->back()->with('success');
     }
 }
