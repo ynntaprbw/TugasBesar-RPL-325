@@ -24,14 +24,23 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $credentials = $request->only('email', 'password');
 
-        $request->session()->regenerate();
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
 
-        return redirect()->intended(route('beranda', absolute: false));
+            if ($user->role === 'user') {
+                $request->session()->regenerate();
+                $request->session()->put('id', $user->id); // Menyimpan id pengguna ke dalam sesi
+                return redirect()->intended(route('beranda', absolute: false));
+            } else {
+                Auth::logout();
+                return redirect()->back()->withErrors(['email' => 'Akses ditolak. Anda bukan user.']);
+            }
+        }
+
+        return redirect()->back()->withErrors(['email' => 'Kredensial tidak valid.']);
     }
-
-
 
     /**
      * Destroy an authenticated session.
@@ -39,12 +48,8 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
-
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect()->route('login');
     }
 }
