@@ -22,14 +22,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/ulasan/filter', [ListUlasanController::class, 'filterByRating']);
     Route::post('/ulasan/store', [ListUlasanController::class, 'store']);
 
-    Route::get('/detailBuku/{id}', [ListBukuController::class, 'getById'])->name('detailBuku');
+    Route::get('/detailBuku/{idBuku}', [ListBukuController::class, 'getById'])->name('detailBuku');
 
     Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel');
 
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang');
-    Route::post('keranjang', [KeranjangController::class, 'store'])->name('keranjang.store');
-    Route::put('/keranjang/{idBuku}', [KeranjangController::class, 'update'])->name('keranjang.update');
-    Route::delete('/keranjang/{idBuku}', [KeranjangController::class, 'destroy'])->name('keranjang.destroy');
+    Route::post('/keranjang/store/{idBuku}', [KeranjangController::class, 'store'])->name('keranjang.store');
+    Route::put('/keranjang/update/{idBuku}', [KeranjangController::class, 'update'])->name('keranjang.update');
+    Route::delete('/keranjang/destroy/{idBuku}', [KeranjangController::class, 'destroy'])->name('keranjang.destroy');
 
 });
 

@@ -29,11 +29,6 @@ class Keranjang extends Model
         return $this->belongsTo(Buku::class, 'idBuku');
     }
 
-    public function ulasan()
-    {
-        return $this->belongsTo(Ulasan::class, 'idUlasan');
-    }
-
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'idKategori');

@@ -16,7 +16,6 @@ return new class extends Migration
         $table->uuid('id');
         $table->unsignedBigInteger('idBuku');
         $table->unsignedBigInteger('idKategori');
-        $table->unsignedBigInteger('idUlasan');
         $table->integer('jumlah_buku');
         $table->integer('total_harga');
         $table->timestamps();
@@ -24,7 +23,6 @@ return new class extends Migration
         $table->foreign('id')->references('id')->on('users');
         $table->foreign('idBuku')->references('idBuku')->on('buku');
         $table->foreign('idKategori')->references('idKategori')->on('kategori');
-        $table->foreign('idUlasan')->references('idUlasan')->on('ulasan');
     });
 }
 
