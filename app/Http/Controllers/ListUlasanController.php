@@ -15,7 +15,7 @@ class ListUlasanController extends Controller
         // Retrieve all reviews with associated book information
         $ulasans = Ulasan::join('buku', 'ulasan.idBuku', '=', 'buku.idBuku')
                      ->join('users', 'ulasan.id', '=', 'users.id')
-                     ->select('ulasan.*', 'buku.judulBuku as judulBuku', 'users.nama as nama')
+                     ->select('ulasan.*', 'buku.judulBuku as judulBuku', 'users.name as name')
                      ->get();
 
         // return response()->json($ulasans);
