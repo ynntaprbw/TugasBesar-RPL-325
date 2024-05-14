@@ -40,7 +40,7 @@ class KeranjangController extends Controller
         $keranjang->total_harga = $keranjang->buku->harga * $request->input('quantity');
         $keranjang->save();
 
-        return redirect()->back()->with('success', 'Kuantitas produk dalam keranjang berhasil diperbarui.');
+        return redirect()->back()->with('success');
     }
 
     public function destroy($id)
