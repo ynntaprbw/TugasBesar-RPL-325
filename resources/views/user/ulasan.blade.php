@@ -9,7 +9,6 @@
         </a>
         <p class="text-xl">Rating: <span class="text-blue-700 font-bold">{{ $ulasan->rating }}</span></p>
         <p class="text-black my-2">Tanggal: {{ $ulasan->tanggalUlasan }}</p>
-
     </div>
     @endforeach
 </div>
