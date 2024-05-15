@@ -98,3 +98,25 @@
         </form>
     </div>
 @endsection
+
+{{-- <script>
+    // Aktifkan/nonaktifkan input tersembunyi berdasarkan status kotak centang
+    document.querySelectorAll('input[name="selected_buku[]"]').forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            var hiddenInput = this.parentNode.querySelector('input[name="selected_buku_ids[]"]');
+            hiddenInput.disabled = this.checked;
+        });
+    });
+</script> --}}
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+    var selectedBukuInput = event.currentTarget.querySelector('input[name="selected_buku"]');
+    var selectedBuku = Array.from(event.currentTarget.querySelectorAll('input[name="selected_buku"]:checked'))
+        .map(function(checkbox) {
+            return checkbox.value;
+        }).join(',');
+
+    selectedBukuInput.value = selectedBuku;
+});
+</script>
