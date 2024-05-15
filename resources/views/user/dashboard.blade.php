@@ -57,23 +57,23 @@
                             <span>Keranjang</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('logout') }}" class="flex items-center p-2 text-white hover:text-white rounded-lg dark:bg-red-500 hover:bg-red-600 group">
-                            <svg class="flex-shrink-0 w-5 h-5 text-white group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4"/>
-                                <path d="M13.5 10.5a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318"/>
-                                <path d="M7.589 16.411l4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699"/>
-                            </svg>
-                            <span class="ml-2">Logout</span>
-                        </a>
-                    </li>
                 </ul>
-                <div class="flex items-center space-x-3">
-                    <div class="flex space-x-5 p-3 bg-indigo-500 rounded-md">
+                <div class="flex items-center space-x-3 relative">
+                    <div id="dropdownButton" class="flex space-x-5 p-3 bg-indigo-500 rounded-md cursor-pointer hover:scale-105">
                         <i class="fi fi-br-user scale-110 text-white"></i>
                         <h2 class="font-bold text-white">{{ Auth::user()->name }}</h2>
                     </div>
+                    <div id="dropdownMenu" class="absolute left-0 mt-24 w-36 items-center bg-red-500 hover:bg-red-400 rounded-md shadow-lg hidden">
+                        <ul class="p-3">
+                            <li>
+                                <a href="{{ route('logout') }}" class="block text-sm text-white">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+
+
+
             </div>
         </div>
     </nav>
@@ -94,6 +94,23 @@
         document.getElementById('dropdown').addEventListener('click', function () {
             document.getElementById('dropdown-menu').classList.toggle('hidden');
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdownButton = document.getElementById('dropdownButton');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+
+            dropdownButton.addEventListener('click', function() {
+                dropdownMenu.classList.toggle('hidden');
+            });
+
+            // Menutup dropdown jika klik di luar dropdown
+            window.addEventListener('click', function(e) {
+                if (!dropdownButton.contains(e.target)) {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+        });
+
     </script>
 </body>
 </html>

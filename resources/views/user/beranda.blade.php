@@ -14,8 +14,9 @@
     <div class="grid grid-cols-4 gap-4">
         @foreach($bukus as $buku)
         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow dark:bg-white dark:border-gray-700">
+            {{-- Ketika gambar bisa dimuat maka akan memunculkan foto Sampul --}}
             <a href="{{ route('detailBuku', ['idBuku' => $buku->idBuku]) }}">
-                <img class="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" />
+                <img class="p-8 rounded-t-lg" src="{{ $buku->fotoSampul }}" alt="foto_sampul" />
             </a>
             <div class="px-5 pb-5">
                 <a href="{{ route('detailBuku', ['idBuku' => $buku->idBuku]) }}">

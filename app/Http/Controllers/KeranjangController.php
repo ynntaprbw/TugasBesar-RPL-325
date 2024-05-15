@@ -72,8 +72,8 @@ class KeranjangController extends Controller
         // Validasi request di sini jika diperlukan
 
         $selectedBuku = $request->session()->get('selected_buku', []);
-    
-        dd($selectedBuku); // Dump data selected_buku
+
+        // dd($selectedBuku); // Dump data selected_buku
 
         $action = $request->action;
 
