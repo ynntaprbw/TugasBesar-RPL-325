@@ -29,7 +29,7 @@
 
         <div class="mb-4">
             <label for="durasi_hari" class="block text-sm font-bold mb-2">Durasi Hari Peminjaman:</label>
-            <input type="number" id="durasi_hari" name="durasi_hari" class="border border-gray-400 p-2 w-full" min="1" required>
+            <input type="number" id="durasi_hari" name="durasi_hari" class="border border-gray-400 p-2 w-full" min="1" max="14" required>
         </div>
 
         <div class="mb-4">

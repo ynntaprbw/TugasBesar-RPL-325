@@ -41,10 +41,11 @@ class PeminjamanController extends Controller
             $peminjaman->durasiPeminjaman = $durasiHari;
             $peminjaman->batasPengembalian = $tanggalPengembalian;
             $peminjaman->idBuku = $keranjang->idBuku; // Simpan ID buku dari keranjang
-            // $peminjaman->statusPeminjaman = 'Dipinjam'; // Atau sesuai dengan kebutuhan Anda
-            // $peminjaman->statusPengambilan = null; // Kolom status pengembalian akan diisi ketika buku dikembalikan
+
             $peminjaman->save();
 
+            // Hapus entri keranjang yang sesuai
+            $keranjang->delete();
         }
 
         // Redirect atau kembalikan kembali ke halaman yang sama atau halaman tertentu jika diperlukan
