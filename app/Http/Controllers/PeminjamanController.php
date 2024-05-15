@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peminjaman;
+use App\Models\Buku;
 use App\Models\Keranjang;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -12,6 +13,19 @@ class PeminjamanController extends Controller
     /**
      * Store a newly created resource in storage.
      */ 
+
+    public function index()
+    {
+
+        $user_id = session('id');
+        $peminjamanItems = Peminjaman::join('buku', 'peminjaman.idBuku', '=', 'buku.idBuku')
+                                  ->select('peminjaman.*', 'buku.judulBuku')
+                                  ->where('peminjaman.id', $user_id)
+                                  ->get();
+        return view('user.peminjaman', compact('peminjamanItems'));
+
+    }
+
     public function store(Request $request)
     {
         // Validasi data secara manual jika diperlukan
