@@ -5,6 +5,7 @@ use App\Http\Controllers\ListBukuController;
 use App\Http\Controllers\ListUlasanController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\PeminjamanController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
@@ -30,6 +31,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/keranjang/store/{idBuku}', [KeranjangController::class, 'store'])->name('keranjang.store');
     Route::put('/keranjang/update/{idBuku}', [KeranjangController::class, 'update'])->name('keranjang.update');
     Route::delete('/keranjang/destroy/{idBuku}', [KeranjangController::class, 'destroy'])->name('keranjang.destroy');
+
+    Route::get('/checkout', [KeranjangController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout', [KeranjangController::class, 'checkout'])->name('checkout');
+    Route::put('/checkout', [KeranjangController::class, 'checkout'])->name('checkout');
+
+    Route::post('/peminjaman/store', [PeminjamanController::class, 'store'])->name('peminjaman.store');
 
 });
 

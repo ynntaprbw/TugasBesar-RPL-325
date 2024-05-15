@@ -18,6 +18,7 @@ class KeranjangController extends Controller
         return view('user.keranjang', compact('keranjangItems'));
     }
 
+
     public function store(Request $request, $idBuku)
     {
         $buku = Buku::findOrFail($idBuku);
@@ -43,8 +44,9 @@ class KeranjangController extends Controller
             $keranjang->save();
         }
 
-        return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang.');
+        return redirect()->back()->with('success');
     }
+
 
     public function update(Request $request, $id)
     {
@@ -56,11 +58,34 @@ class KeranjangController extends Controller
         return redirect()->back()->with('success');
     }
 
+
     public function destroy($id)
     {
         $keranjang = Keranjang::findOrFail($id);
         $keranjang->delete();
 
         return redirect()->back()->with('success');
+    }
+
+    public function checkout(Request $request)
+    {
+        // Validasi request di sini jika diperlukan
+
+        $selectedBuku = $request->session()->get('selected_buku', []);
+    
+        dd($selectedBuku); // Dump data selected_buku
+
+        $action = $request->action;
+
+        // Ambil nilai selected_buku jika tersedia di dalam sesi
+        $selectedBuku = $request->session()->get('selected_buku', []);
+
+        if ($action == 'beli') {
+            return view('user.form_pembelian', ['selected_buku' => $selectedBuku]);
+        } elseif ($action == 'pinjam') {
+            return view('user.form_peminjaman', ['selected_buku' => $selectedBuku]);
+        } else {
+            return redirect()->back()->with('error', 'Tidak ada tindakan yang valid.');
+        }
     }
 }
