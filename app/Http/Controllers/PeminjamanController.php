@@ -21,9 +21,32 @@ class PeminjamanController extends Controller
         $peminjamanItems = Peminjaman::join('buku', 'peminjaman.idBuku', '=', 'buku.idBuku')
                                   ->select('peminjaman.*', 'buku.judulBuku')
                                   ->where('peminjaman.id', $user_id)
+                                  ->whereNull('tanggalPengembalian') 
                                   ->get();
+
+        // Ubah format tanggal menjadi objek Carbon
+        foreach ($peminjamanItems as $peminjaman) {
+            $peminjaman->tanggalPeminjaman = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $peminjaman->tanggalPeminjaman)->startOfDay();
+            $peminjaman->batasPengembalian = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $peminjaman->batasPengembalian)->startOfDay();
+            // Lakukan hal yang sama untuk kolom tanggal lainnya jika diperlukan
+        }
         return view('user.peminjaman', compact('peminjamanItems'));
 
+    }
+
+    public function pengembalian()
+    {
+        $user_id = session('id');
+        $pengembalianItems = Peminjaman::with('buku')
+                                        ->where('id', $user_id)
+                                        ->whereNotNull('tanggalPengembalian') // Hanya data dengan tanggal pengembalian yang sudah diisi
+                                        ->get();
+
+        foreach ($pengembalianItems as $peminjaman) {
+            $peminjaman->tanggalPengembalian = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $peminjaman->tanggalPengembalian)->startOfDay();
+        }
+
+        return view('user.pengembalian', compact('pengembalianItems'));
     }
 
     public function store(Request $request)

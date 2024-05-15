@@ -39,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman');
     Route::post('/peminjaman/store', [PeminjamanController::class, 'store'])->name('peminjaman.store');
 
+    Route::get('/pengembalian', [PeminjamanController::class, 'pengembalian'])->name('pengembalian');
+
 });
 
 

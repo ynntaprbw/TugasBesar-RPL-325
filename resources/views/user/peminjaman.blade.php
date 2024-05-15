@@ -11,6 +11,7 @@
                 <th class="px-4 py-2">Tanggal Peminjaman</th>
                 <th class="px-4 py-2">Batas Pengembalian</th>
                 <th class="px-4 py-2">Durasi Peminjaman</th>
+                <th class="px-4 py-2">Status Pengambilan</th>
             </tr>
         </thead>
         <tbody>
@@ -18,9 +19,10 @@
                 <tr>
                     <td class="border px-4 py-2">{{ $index + 1 }}</td>
                     <td class="border px-4 py-2">{{ $peminjaman->judulBuku }}</td>
-                    <td class="border px-4 py-2">{{ $peminjaman->tanggalPeminjaman }}</td>
-                    <td class="border px-4 py-2">{{ $peminjaman->batasPengembalian }}</td>
+                    <td class="border px-4 py-2">{{ $peminjaman->tanggalPeminjaman->format('d F Y') }}</td>
+                    <td class="border px-4 py-2">{{ $peminjaman->batasPengembalian->format('d F Y') }}</td>
                     <td class="border px-4 py-2">{{ $peminjaman->durasiPeminjaman }} hari</td>
+                    <td class="border px-4 py-2">{{ $peminjaman->statusPengambilan }}</td>
                 </tr>
             @endforeach
         </tbody>
