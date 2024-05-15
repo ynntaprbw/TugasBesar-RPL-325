@@ -13,8 +13,8 @@ return new class extends Migration
             $table->unsignedBigInteger('idPeminjaman');
             $table->uuid('id');
             $table->integer('totalDenda');
-            $table->dateTime('tanggalBayarDenda');
-            $table->string('statusDenda');
+            $table->dateTime('tanggalBayarDenda') -> nullable();
+            $table->enum('statusDenda', ['Belum Lunas', 'Lunas'])->default('Belum Lunas');
             $table->string('metodePembayaran');
             $table->timestamps();
 
