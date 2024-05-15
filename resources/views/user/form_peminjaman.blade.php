@@ -6,11 +6,22 @@
     <form action="{{ route('peminjaman.store') }}" method="POST">
         @csrf
 
-        
+        {{-- {{ dd($selectedBuku) }} --}}
 
-        @foreach($selected_buku as $idKeranjang)
+        @foreach($selectedBuku as $idKeranjang)
             <input type="hidden" name="selected_buku[]" value="{{ $idKeranjang }}">
         @endforeach
+
+        <!-- Tampilkan detail buku -->
+        <div class="mb-4">
+            <h2 class="text-xl font-bold mb-2">Detail Buku</h2>
+            @foreach ($selectedBukuDetails as $idKeranjang => $detail)
+                <div class="mb-2">
+                    <p>Judul Buku: {{ $detail['judulBuku'] }}</p>
+                    <p>Penulis: {{ $detail['namaPenulis'] }}</p>
+                </div>
+            @endforeach
+        </div>
 
         <div class="mb-4">
             <label for="nama_lengkap" class="block text-sm font-bold mb-2">Nama Lengkap:</label>
@@ -29,7 +40,7 @@
 
         <div class="mb-4">
             <label for="durasi_hari" class="block text-sm font-bold mb-2">Durasi Hari Peminjaman:</label>
-            <input type="number" id="durasi_hari" name="durasi_hari" class="border border-gray-400 p-2 w-full" min="1" required>
+            <input type="number" id="durasi_hari" name="durasi_hari" class="border border-gray-400 p-2 w-full" min="1" max="14" required>
         </div>
 
         <div class="mb-4">

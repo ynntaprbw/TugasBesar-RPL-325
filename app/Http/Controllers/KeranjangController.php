@@ -70,22 +70,51 @@ class KeranjangController extends Controller
     public function checkout(Request $request)
     {
         // Validasi request di sini jika diperlukan
-
-        $selectedBuku = $request->session()->get('selected_buku', []);
-    
-        dd($selectedBuku); // Dump data selected_buku
-
+        $selectedBuku = $request->input('selected_buku', []);
         $action = $request->action;
 
-        // Ambil nilai selected_buku jika tersedia di dalam sesi
-        $selectedBuku = $request->session()->get('selected_buku', []);
+        // Cek apakah ada buku yang dipilih
+        if (empty($selectedBuku)) {
+            return redirect()->back()->with('error', 'Tidak ada buku yang dipilih untuk melakukan checkout.');
+        }
+
+        $selectedBukuDetails = [];
+
+        // Ambil detail buku berdasarkan ID buku dari setiap idKeranjang yang dipilih
+        foreach ($selectedBuku as $idKeranjang) {
+            $keranjang = Keranjang::findOrFail($idKeranjang);
+            $buku = $keranjang->buku;
+
+            // Simpan detail yang dibutuhkan ke dalam array
+            $selectedBukuDetails[$idKeranjang] = [
+                'judulBuku' => $buku->judulBuku,
+                'namaPenulis' => $buku->namaPenulis,
+            ];
+        }
 
         if ($action == 'beli') {
-            return view('user.form_pembelian', ['selected_buku' => $selectedBuku]);
+            return view('user.form_pembelian', compact('selectedBuku', 'selectedBukuDetails'));
         } elseif ($action == 'pinjam') {
-            return view('user.form_peminjaman', ['selected_buku' => $selectedBuku]);
+            return view('user.form_peminjaman', compact('selectedBuku', 'selectedBukuDetails'));
         } else {
             return redirect()->back()->with('error', 'Tidak ada tindakan yang valid.');
         }
     }
+
+
+    // public function checkout(Request $request)
+    // {
+    //     // Ambil array ID buku yang dipilih dari input tersembunyi
+    //     $selectedBukuIds = $request->input('selected_buku_ids', []);
+
+    //     $action = $request->input('action');
+
+    //     if ($action == 'beli') {
+    //         return view('user.form_pembelian', compact('selectedBukuIds'));
+    //     } elseif ($action == 'pinjam') {
+    //         return view('user.form_peminjaman', compact('selectedBukuIds'));
+    //     } else {
+    //         return redirect()->back()->with('error', 'Tidak ada tindakan yang valid.');
+    //     }
+    // }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peminjaman;
+use App\Models\Keranjang;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -10,7 +11,7 @@ class PeminjamanController extends Controller
 {
     /**
      * Store a newly created resource in storage.
-     */
+     */ 
     public function store(Request $request)
     {
         // Validasi data secara manual jika diperlukan
@@ -40,58 +41,14 @@ class PeminjamanController extends Controller
             $peminjaman->durasiPeminjaman = $durasiHari;
             $peminjaman->batasPengembalian = $tanggalPengembalian;
             $peminjaman->idBuku = $keranjang->idBuku; // Simpan ID buku dari keranjang
-            // $peminjaman->statusPeminjaman = 'Dipinjam'; // Atau sesuai dengan kebutuhan Anda
-            // $peminjaman->statusPengambilan = null; // Kolom status pengembalian akan diisi ketika buku dikembalikan
+
             $peminjaman->save();
 
+            // Hapus entri keranjang yang sesuai
+            $keranjang->delete();
         }
 
         // Redirect atau kembalikan kembali ke halaman yang sama atau halaman tertentu jika diperlukan
         return redirect()->route('beranda')->with('success', 'Data peminjaman berhasil disimpan.');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Peminjaman $peminjaman)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Peminjaman $peminjaman)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePeminjamanRequest $request, Peminjaman $peminjaman)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Peminjaman $peminjaman)
-    {
-        //
     }
 }
