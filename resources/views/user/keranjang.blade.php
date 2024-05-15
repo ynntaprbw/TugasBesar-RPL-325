@@ -34,7 +34,9 @@
                         @foreach ($keranjangItems as $item)
                             <tr>
                                 <td class="border px-4 py-2">
-                                    <input type="checkbox" name="selected_buku[]" value="{{ $item->idKeranjang }}" class="form-checkbox h-5 w-5 text-green-500">
+                                    {{-- <input type="checkbox" name="selected_buku" value="{{ $item->idKeranjang }}" class="form-checkbox h-5 w-5 text-green-500"> --}}
+                                    <input type="checkbox" name="selected_buku[]" value="{{ $item->idKeranjang }}">
+                                    {{-- <input type="hidden" name="selected_buku_ids[]" value="{{ $item->idKeranjang }}" disabled> --}}
                                 </td> <!-- Kolom centang -->
                                 <td class="border px-4 py-2">{{ $item->buku->judulBuku }}</td>
                                 <td class="border px-4 py-2">Rp{{ number_format($item->buku->harga, 2, ',', '.') }}</td>
@@ -69,3 +71,25 @@
         </form>
     </div>
 @endsection
+
+{{-- <script>
+    // Aktifkan/nonaktifkan input tersembunyi berdasarkan status kotak centang
+    document.querySelectorAll('input[name="selected_buku[]"]').forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            var hiddenInput = this.parentNode.querySelector('input[name="selected_buku_ids[]"]');
+            hiddenInput.disabled = this.checked;
+        });
+    });
+</script> --}}
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+    var selectedBukuInput = event.currentTarget.querySelector('input[name="selected_buku"]');
+    var selectedBuku = Array.from(event.currentTarget.querySelectorAll('input[name="selected_buku"]:checked'))
+        .map(function(checkbox) {
+            return checkbox.value;
+        }).join(',');
+
+    selectedBukuInput.value = selectedBuku;
+});
+</script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peminjaman;
+use App\Models\Keranjang;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 

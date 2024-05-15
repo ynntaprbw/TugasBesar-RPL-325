@@ -6,9 +6,9 @@
     <form action="{{ route('peminjaman.store') }}" method="POST">
         @csrf
 
-        
+        {{-- {{ dd($selectedBuku) }} --}}
 
-        @foreach($selected_buku as $idKeranjang)
+        @foreach($selectedBuku as $idKeranjang)
             <input type="hidden" name="selected_buku[]" value="{{ $idKeranjang }}">
         @endforeach
 
