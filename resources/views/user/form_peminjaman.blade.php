@@ -12,6 +12,17 @@
             <input type="hidden" name="selected_buku[]" value="{{ $idKeranjang }}">
         @endforeach
 
+        <!-- Tampilkan detail buku -->
+        <div class="mb-4">
+            <h2 class="text-xl font-bold mb-2">Detail Buku</h2>
+            @foreach ($selectedBukuDetails as $idKeranjang => $detail)
+                <div class="mb-2">
+                    <p>Judul Buku: {{ $detail['judulBuku'] }}</p>
+                    <p>Penulis: {{ $detail['namaPenulis'] }}</p>
+                </div>
+            @endforeach
+        </div>
+
         <div class="mb-4">
             <label for="nama_lengkap" class="block text-sm font-bold mb-2">Nama Lengkap:</label>
             <input type="text" id="nama_lengkap" name="nama_lengkap" class="border border-gray-400 p-2 w-full" required>

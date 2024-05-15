@@ -65,8 +65,12 @@
                 </table>
             </div>
             <div class="flex mt-4">
-                <button type="submit" name="action" value="pinjam" class="btn btn-primary mr-2">Pinjam Buku</button>
-                <button type="submit" name="action" value="beli" class="btn btn-primary">Beli Buku</button>
+                <button type="submit" name="action" value="pinjam" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+                    Pinjam Buku
+                </button>
+                <button type="submit" name="action" value="beli" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Beli Buku
+                </button>
             </div>
         </form>
     </div>

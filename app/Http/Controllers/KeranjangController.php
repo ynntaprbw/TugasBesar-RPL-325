@@ -70,20 +70,37 @@ class KeranjangController extends Controller
     public function checkout(Request $request)
     {
         // Validasi request di sini jika diperlukan
-
         $selectedBuku = $request->input('selected_buku', []);
-
         $action = $request->action;
 
+        // Cek apakah ada buku yang dipilih
+        if (empty($selectedBuku)) {
+            return redirect()->back()->with('error', 'Tidak ada buku yang dipilih untuk melakukan checkout.');
+        }
+
+        $selectedBukuDetails = [];
+
+        // Ambil detail buku berdasarkan ID buku dari setiap idKeranjang yang dipilih
+        foreach ($selectedBuku as $idKeranjang) {
+            $keranjang = Keranjang::findOrFail($idKeranjang);
+            $buku = $keranjang->buku;
+
+            // Simpan detail yang dibutuhkan ke dalam array
+            $selectedBukuDetails[$idKeranjang] = [
+                'judulBuku' => $buku->judulBuku,
+                'namaPenulis' => $buku->namaPenulis,
+            ];
+        }
 
         if ($action == 'beli') {
-            return view('user.form_pembelian', compact('selectedBuku'));
+            return view('user.form_pembelian', compact('selectedBuku', 'selectedBukuDetails'));
         } elseif ($action == 'pinjam') {
-            return view('user.form_peminjaman', compact('selectedBuku'));
+            return view('user.form_peminjaman', compact('selectedBuku', 'selectedBukuDetails'));
         } else {
             return redirect()->back()->with('error', 'Tidak ada tindakan yang valid.');
         }
     }
+
 
     // public function checkout(Request $request)
     // {
