@@ -6,6 +6,7 @@ use App\Http\Controllers\ListUlasanController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PembelianController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
@@ -36,7 +37,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/checkout', [KeranjangController::class, 'checkout'])->name('checkout');
     Route::put('/checkout', [KeranjangController::class, 'checkout'])->name('checkout');
 
-    // belom ada di navbar
+    Route::get('/pembelian', [PembelianController::class, 'index'])->name('pembelian');
+    Route::post('/pembelian/store', [PembelianController::class, 'store'])->name('pembelian.store');
+
     Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman');
     Route::post('/peminjaman/store', [PeminjamanController::class, 'store'])->name('peminjaman.store');
 

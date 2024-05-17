@@ -71,6 +71,7 @@ class KeranjangController extends Controller
     {
         // Validasi request di sini jika diperlukan
         $selectedBuku = $request->input('selected_buku', []);
+        $metodePembayaranOptions = ['Ovo', 'Gopay', 'Shopeepay', 'Dana'];
         $action = $request->action;
 
         // Cek apakah ada buku yang dipilih
@@ -93,7 +94,7 @@ class KeranjangController extends Controller
         }
 
         if ($action == 'beli') {
-            return view('user.form_pembelian', compact('selectedBuku', 'selectedBukuDetails'));
+            return view('user.form_pembelian', compact('selectedBuku', 'selectedBukuDetails', 'metodePembayaranOptions'));
         } elseif ($action == 'pinjam') {
             return view('user.form_peminjaman', compact('selectedBuku', 'selectedBukuDetails'));
         } else {

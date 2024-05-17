@@ -15,18 +15,18 @@ return new class extends Migration
             $table->id('idPembelian');
             $table->uuid('id');
             // $table->unsignedBiginteger('idAdmin');
-            $table->unsignedBigInteger('idKeranjang');
+            $table->unsignedBigInteger('idBuku');
             $table->dateTime('tanggalPembayaran');
-            $table->decimal('diskon');
+            $table->decimal('diskon')->default(0.0);
             $table->integer('total_bayar');
-            $table->string('metodePembayaran');
-            $table->string('statusPembayaran');
-            $table->string('statusPengambilan');
+            $table->enum('metodePembayaran', ['Ovo', 'Gopay', 'Shopeepay', 'Dana']);
+            $table->enum('statusPembayaran', ['Belum Lunas', 'Lunas'])->default('Belum Lunas');
+            $table->enum('statusPengambilan', ['Belum Diambil', 'Diambil'])->default('Belum Diambil');
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('users');
             // $table->foreign('idAdmin')->references('idAdmin')->on('admin');
-            $table->foreign('idKeranjang')->references('idKeranjang')->on('keranjang');
+            $table->foreign('idBuku')->references('idBuku')->on('buku');
 
         });
     }
