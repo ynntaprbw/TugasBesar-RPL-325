@@ -34,8 +34,8 @@
                             </svg>
                         </button>
                         <ul x-show="isOpen" @click.away="isOpen = false" class="absolute z-10 hidden bg-white border border-gray-200 py-1 mt-2 rounded-lg" id="dropdown-menu">
-                            <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Peminjaman Buku</a></li>
-                            <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Pengembalian Buku</a></li>
+                            <li><a href="{{ route('peminjaman') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Peminjaman Buku</a></li>
+                            <li><a href="{{ route('pengembalian') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Pengembalian Buku</a></li>
                             <li><a href="{{ route('ulasan') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Ulasan Buku</a></li>
                             <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Pelunasan Denda</a></li>
                             <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Pembelian Buku</a></li>
