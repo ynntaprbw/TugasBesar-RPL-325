@@ -76,36 +76,4 @@ class PembelianController extends Controller
         // Redirect atau kembalikan kembali ke halaman yang sama atau halaman tertentu jika diperlukan
         return redirect()->route('beranda')->with('success', 'Pembelian berhasil disimpan.');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Pembelian $pembelian)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pembelian $pembelian)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePembelianRequest $request, Pembelian $pembelian)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Pembelian $pembelian)
-    {
-        //
-    }
 }

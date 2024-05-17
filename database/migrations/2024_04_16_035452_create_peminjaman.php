@@ -22,6 +22,7 @@ return new class extends Migration
             $table->dateTime('tanggalPengembalian') -> nullable();
             $table->enum('statusPeminjaman', ['Telat', 'Tepat Waktu']) -> nullable();
             $table->enum('statusPengambilan', ['Belum Diambil', 'Diambil'])->default('Belum Diambil');
+            $table->boolean('konfirmasi') -> default(false);
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('users');

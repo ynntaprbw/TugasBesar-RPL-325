@@ -31,9 +31,15 @@ class BukuResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('judulBuku')->label('Judul Buku')->required(),
-                TextInput::make('namaPenulis')->label('Nama Penulis')->required(),
-                TextInput::make('namaPenerbit')->label('Nama Penerbit')->required(),
+                TextInput::make('judulBuku')
+                    ->label('Judul Buku')
+                    ->required(),
+                TextInput::make('namaPenulis')
+                    ->label('Nama Penulis')
+                    ->required(),
+                TextInput::make('namaPenerbit')
+                    ->label('Nama Penerbit')
+                    ->required(),
                 TextInput::make('tahunTerbit')
                     ->label('Tahun Terbit')
                     ->required(),
@@ -41,7 +47,10 @@ class BukuResource extends Resource
                     ->label('Harga')
                     ->type('number')
                     ->required(),
-               TextInput::make('stokBuku')->label('Stok Buku')->type('number')->required(),
+               TextInput::make('stokBuku')
+                    ->label('Stok Buku')
+                    ->type('number')
+                    ->required(),
                 TextInput::make('jumlahHalaman')
                     ->label('Jumlah Halaman')
                     ->type('number')

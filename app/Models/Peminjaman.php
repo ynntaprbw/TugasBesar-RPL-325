@@ -17,6 +17,7 @@ class Peminjaman extends Model
         'tanggalPengembalian',
         'statusPeminjaman',
         'statusPengambilan',
+        'konfirmasi'
     ];
 
     public function user()
@@ -28,4 +29,22 @@ class Peminjaman extends Model
     {
         return $this->belongsTo(Buku::class, 'idBuku');
     }
+
+    // protected static function boot()
+    // {
+    //     parent::boot();
+
+    //     // Event listener saat menyimpan atau memperbarui data peminjaman
+    //     static::saving(function ($peminjaman) {
+    //         // Periksa apakah tanggal pengembalian melebihi batas pengembalian
+    //         if ($peminjaman->tanggalPengembalian > $peminjaman->batasPengembalian) {
+    //             // Jika ya, atur status peminjaman menjadi "Telat"
+    //             $peminjaman->statusPeminjaman = 'Telat';
+    //         } else {
+    //             // Jika tidak, atur kembali status peminjaman sesuai kondisi lainnya
+    //             // Misalnya, di sini saya asumsikan jika tepat waktu maka status akan menjadi "Tepat Waktu"
+    //             $peminjaman->statusPeminjaman = 'Tepat Waktu';
+    //         }
+    //     });
+    // }
 }

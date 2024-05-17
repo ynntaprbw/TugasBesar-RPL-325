@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ListBukuController;
-use App\Http\Controllers\ListUlasanController;
+use App\Http\Controllers\DendaController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\ListBukuController;
 use App\Http\Controllers\KeranjangController;
-use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\ListUlasanController;
+use App\Http\Controllers\PeminjamanController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
@@ -44,6 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/peminjaman/store', [PeminjamanController::class, 'store'])->name('peminjaman.store');
 
     Route::get('/pengembalian', [PeminjamanController::class, 'pengembalian'])->name('pengembalian');
+
+    Route::post('/denda/tambahDenda', [DendaController::class, 'tambahDenda'])->name('denda.tambahDenda');
 
 });
 

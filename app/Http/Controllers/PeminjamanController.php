@@ -77,6 +77,7 @@ class PeminjamanController extends Controller
             $peminjaman->tanggalPeminjaman = $tanggalPeminjaman;
             $peminjaman->durasiPeminjaman = $durasiHari;
             $peminjaman->batasPengembalian = $tanggalPengembalian;
+            $peminjaman->konfirmasi = false;
             $peminjaman->idBuku = $keranjang->idBuku; // Simpan ID buku dari keranjang
 
             $peminjaman->save();
