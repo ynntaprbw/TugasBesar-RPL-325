@@ -8,9 +8,9 @@ use App\Models\Buku;
 use Filament\Forms;
 use Filament\Forms\Components;
 use Filament\Resources\Resource;
-use App\Filament\Resources\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
+use App\Filament\forms\Resources\FileUpload;
 use Filament\Tables;
 use App\Filament\Resources\Select;
 use Filament\Tables\Table;
@@ -31,6 +31,8 @@ class BukuResource extends Resource
     {
         return $form
             ->schema([
+                TextInput::make('idBuku')->label('ID Buku'),
+                TextInput::make('idKategori')->label('ID Kategori'),
                 TextInput::make('judulBuku')
                     ->label('Judul Buku')
                     ->required(),
@@ -51,6 +53,7 @@ class BukuResource extends Resource
                     ->label('Stok Buku')
                     ->type('number')
                     ->required(),
+                TextInput::make('fotosampul')->label('Foto Sampul'),
                 TextInput::make('jumlahHalaman')
                     ->label('Jumlah Halaman')
                     ->type('number')
@@ -70,6 +73,7 @@ class BukuResource extends Resource
     {
         return $table
             ->columns([
+                textcolumn::make('idBuku')->label("ID Buku"),
                 TextColumn::make('judulBuku')->label('Judul Buku'),
                 TextColumn::make('namaPenulis')->label('Nama Penulis'),
                 TextColumn::make('namaPenerbit')->label('Nama Penerbit'),

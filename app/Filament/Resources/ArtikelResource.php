@@ -6,14 +6,17 @@ use App\Filament\Resources\ArtikelResource\Pages;
 use App\Filament\Resources\ArtikelResource\RelationManagers;
 use App\Models\Artikel;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Markdown;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -30,14 +33,13 @@ class ArtikelResource extends Resource
        return $form
     ->schema([
         Section::make('Main Content')->schema([
-            TextInput::make('idcustomer')->label('ID Customer'),
-            RichEditor::make('media')->label('media')
-                ->required()
-                ->fileAttachmentsDirectory('post/images'),
+            TextInput::make('idArtikel')->label('ID Artikel'),
+            TextInput::make('id'),
+            fileupload::make('media')->label('Media'),
             TextInput::make('judulArtikel')->label('Judul Artikel'),
             TextInput::make('sumberArtikel')->label('Sumber Artikel'),
             TextInput::make('thumbnail')->label('Thumbnail'),
-            TextInput::make('tanggalUnggah')->label('Tanggal Unggah')
+            DatePicker::make('tanggalUnggah')->label('Tanggal Unggah')
 
 
             
@@ -50,7 +52,9 @@ public static function table(Table $table): Table
     {
         return $table
             ->columns([
-            TextColumn::make('idcustomer')->label('ID Customer'),
+            TextColumn::make('idArtikel')->label('ID Artikel'),
+            TextColumn::make('id'),
+            ImageColumn::make('media')->label('Media'),
              TextColumn::make('judulArtikel')->label('Judul Artikel'),
             TextColumn::make('sumberArtikel')->label('Sumber Artikel'),
             TextColumn::make('thumbnail')->label('Thumbnail'),
