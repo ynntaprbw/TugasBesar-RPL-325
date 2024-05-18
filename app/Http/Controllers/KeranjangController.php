@@ -101,21 +101,4 @@ class KeranjangController extends Controller
             return redirect()->back()->with('error', 'Tidak ada tindakan yang valid.');
         }
     }
-
-
-    // public function checkout(Request $request)
-    // {
-    //     // Ambil array ID buku yang dipilih dari input tersembunyi
-    //     $selectedBukuIds = $request->input('selected_buku_ids', []);
-
-    //     $action = $request->input('action');
-
-    //     if ($action == 'beli') {
-    //         return view('user.form_pembelian', compact('selectedBukuIds'));
-    //     } elseif ($action == 'pinjam') {
-    //         return view('user.form_peminjaman', compact('selectedBukuIds'));
-    //     } else {
-    //         return redirect()->back()->with('error', 'Tidak ada tindakan yang valid.');
-    //     }
-    // }
 }

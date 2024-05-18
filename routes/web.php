@@ -46,7 +46,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/pengembalian', [PeminjamanController::class, 'pengembalian'])->name('pengembalian');
 
+    Route::get('/denda', [DendaController::class, 'index'])->name('denda');
     Route::post('/denda/tambahDenda', [DendaController::class, 'tambahDenda'])->name('denda.tambahDenda');
+    Route::get('/denda/{denda}/form', [DendaController::class, 'showFormDenda'])->name('denda.showFormDenda');
+    Route::post('/denda/bayar', [DendaController::class, 'submitPelunasanDenda'])->name('denda.submitPelunasanDenda');
 
 });
 
