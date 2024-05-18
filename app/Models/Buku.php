@@ -44,4 +44,14 @@ class Buku extends Model
         return view('user.beranda', compact('bukus'));
     }
 
+    public function peminjaman()
+    {
+        return $this->hasMany(Peminjaman::class);
+    }
+
+    public function pembelian()
+    {
+        return $this->hasMany(Pembelian::class);
+    }
+
 }

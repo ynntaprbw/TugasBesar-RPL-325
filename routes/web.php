@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DendaController;
+use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ListBukuController;
 use App\Http\Controllers\KeranjangController;
@@ -21,7 +22,7 @@ Route::get('/beranda', [ListBukuController::class, 'create'])
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/ulasan', [ListUlasanController::class, 'index'])->name('ulasan');
+    Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan');
     Route::post('/ulasan/filter', [ListUlasanController::class, 'filterByRating']);
     Route::post('/ulasan/store', [ListUlasanController::class, 'store']);
 
