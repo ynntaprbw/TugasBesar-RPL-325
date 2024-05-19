@@ -20,8 +20,8 @@
             @csrf
             <div class="overflow-x-auto">
                 <div class="overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                             <tr>
                                 <th scope="col" class="py-3 jus"></th>
                                 <th scope="col" class="px-16 py-3">
@@ -46,21 +46,21 @@
                         </thead>
                     <tbody>
                         @foreach ($keranjangItems as $item)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="bg-white border-b   hover:bg-gray-50 ">
                             {{-- Checkbox --}}
                             <td class="w-4 p-4">
                                 <div class="flex items-center">
-                                    <input type="checkbox" name="selected_buku[]" value="{{ $item->idKeranjang }}" class="form-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <input type="checkbox" name="selected_buku[]" value="{{ $item->idKeranjang }}" class="form-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 ">
                                 </div>
                             </td>
                             {{-- Foto buku --}}
                             <td class="p-4">
                                 <img src="{{ $item->buku->fotoSampul }}" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
                             </td>
-                            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td class="px-6 py-4 font-semibold text-gray-900 ">
                                 {{ $item->buku->judulBuku }}
                             </td>
-                            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td class="px-6 py-4 font-semibold text-gray-900 ">
                                 Rp{{ number_format($item->buku->harga, 2, ',', '.') }}
                             </td>
                             <td class="px-4 py-2">
@@ -74,7 +74,7 @@
                                     </div>
                                 </form>
                             </td>
-                            <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                            <td class="px-6 py-4 font-semibold text-gray-900 ">
                                 Rp{{ number_format($item->total_harga, 2, ',', '.') }}
                             </td>
 
@@ -82,7 +82,7 @@
                                 <form action="{{ route('keranjang.destroy', $item->idKeranjang) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline">Hapus</button>
+                                    <button type="submit" class="font-medium text-red-600  hover:underline">Hapus</button>
                                 </form>
                             </td>
 
