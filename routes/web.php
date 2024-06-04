@@ -7,6 +7,7 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ListBukuController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\SumbanganController;
 use App\Http\Controllers\ListUlasanController;
 use App\Http\Controllers\PeminjamanController;
 
@@ -52,6 +53,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/denda/{denda}/form', [DendaController::class, 'showFormDenda'])->name('denda.showFormDenda');
     Route::post('/denda/bayar', [DendaController::class, 'submitPelunasanDenda'])->name('denda.submitPelunasanDenda');
 
+    Route::get('/sumbangan', [SumbanganController::class, 'index'])->name('sumbangan');
+    Route::get('/sumbangan/create', [SumbanganController::class, 'create'])->name('sumbangan.create');
+    Route::post('/sumbangan', [SumbanganController::class, 'store'])->name('sumbangan.store');
 });
 
 

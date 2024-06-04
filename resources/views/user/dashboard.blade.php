@@ -39,7 +39,7 @@
                             <li><a href="{{ route('ulasan') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Ulasan Buku</a></li>
                             <li><a href="{{ route('denda') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Pelunasan Denda</a></li>
                             <li><a href="{{ route('pembelian') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Pembelian Buku</a></li>
-                            <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Sumbangan Buku</a></li>
+                            <li><a href="{{ route('sumbangan') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Sumbangan Buku</a></li>
                         </ul>
                     </li>
                     <li>
