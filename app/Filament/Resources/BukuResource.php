@@ -13,6 +13,7 @@ use Filament\Forms\Components\RichEditor;
 use App\Filament\forms\Resources\FileUpload;
 use Filament\Tables;
 use App\Filament\Resources\Select;
+use Filament\Forms\Components\FileUpload as ComponentsFileUpload;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Form;
@@ -53,7 +54,9 @@ class BukuResource extends Resource
                     ->label('Stok Buku')
                     ->type('number')
                     ->required(),
-                TextInput::make('fotosampul')->label('Foto Sampul'),
+                ComponentsFileUpload::make('fotoSampul')
+                    ->label('Foto Sampul')
+                    ->required(),
                 TextInput::make('jumlahHalaman')
                     ->label('Jumlah Halaman')
                     ->type('number')
@@ -66,6 +69,7 @@ class BukuResource extends Resource
                 TextInput::make('bahasa')
                     ->label('Bahasa')
                     ->required(),
+                
             ]);
     }
 

@@ -3,24 +3,18 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ArtikelResource\Pages;
-use App\Filament\Resources\ArtikelResource\RelationManagers;
 use App\Models\Artikel;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Support\Markdown;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ArtikelResource extends Resource
 {
@@ -30,37 +24,37 @@ class ArtikelResource extends Resource
 
     public static function form(Form $form): Form
     {
-       return $form
-    ->schema([
-        Section::make('Main Content')->schema([
-            TextInput::make('idArtikel')->label('ID Artikel'),
-            TextInput::make('id'),
-            fileupload::make('media')->label('Media'),
-            TextInput::make('judulArtikel')->label('Judul Artikel'),
-            TextInput::make('sumberArtikel')->label('Sumber Artikel'),
-            TextInput::make('thumbnail')->label('Thumbnail'),
-            DatePicker::make('tanggalUnggah')->label('Tanggal Unggah')
-
-
-            
-                
-        ])
-    ]);
-
+        return $form
+            ->schema([
+                Section::make('Main Content')->schema([
+                    TextInput::make('idArtikel')->label('ID Artikel'),
+                    TextInput::make('id'),
+                    FileUpload::make('media')
+                        ->label('Media')
+                        ->disk('public') // Ensure the file is saved on the public disk
+                        ->directory('uploads/media') // Specify the directory
+                        ->visibility('public'), // Set visibility to public
+                    TextInput::make('judulArtikel')->label('Judul Artikel'),
+                    TextInput::make('sumberArtikel')->label('Sumber Artikel'),
+                    TextInput::make('thumbnail')->label('Thumbnail'),
+                    DatePicker::make('tanggalUnggah')->label('Tanggal Unggah')
+                ])
+            ]);
     }
-public static function table(Table $table): Table
+
+    public static function table(Table $table): Table
     {
         return $table
             ->columns([
-            TextColumn::make('idArtikel')->label('ID Artikel'),
-            TextColumn::make('id'),
-            ImageColumn::make('media')->label('Media'),
-             TextColumn::make('judulArtikel')->label('Judul Artikel'),
-            TextColumn::make('sumberArtikel')->label('Sumber Artikel'),
-            TextColumn::make('thumbnail')->label('Thumbnail'),
-            TextColumn::make('tanggalUnggah')->label('Tanggal Unggah')
-
-
+                TextColumn::make('idArtikel')->label('ID Artikel'),
+                TextColumn::make('id'),
+                ImageColumn::make('media')
+                    ->label('Media')
+                    ->disk('public'), // Ensure the image is retrieved from the public disk
+                TextColumn::make('judulArtikel')->label('Judul Artikel'),
+                TextColumn::make('sumberArtikel')->label('Sumber Artikel'),
+                TextColumn::make('thumbnail')->label('Thumbnail'),
+                TextColumn::make('tanggalUnggah')->label('Tanggal Unggah')
             ])
             ->filters([
                 //
