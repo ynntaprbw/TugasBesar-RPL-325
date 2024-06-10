@@ -1,67 +1,43 @@
 @extends('user.dashboard')
 @section('content')
-<div class="">
-    <div> 
-        <h1>Informasi Buku</h1>
-    </div>
-    <br>
-    <div class="flex flex-row gap-20">
-        <img src="" alt="img Buku">
-        <div class="">
-            <h1>Judul Buku: {{ $buku->judulBuku }}</h1>
-            <h2>Author: {{ $buku->namaPenulis }}</h2>
-            <h3>kategori: {{ $buku->kategori->namaKategori }}</h3>
-            <div>
-                Rating: 
-            </div>
-            <h2>Harga: {{ $buku->harga }}</h2>
-            <br>
-            <div>
-                <h3>Deskripsi</h3>
-                <p>{{ $buku->sinopsis }}</p>
-            </div>
-            <br>
-            <div>
-                Detail
-                <div class="flex gap-8">
-                    <ul>
-                        <li>ISBN</li>
-                        <li>{{ $buku->ISBN }}</li>
-                        <li>Jumlah Halaman</li>
-                        <li>{{ $buku->jumlahHalaman }}</li>
-                        <li>Tahun Terbit</li>
-                        <li>{{ $buku->tahunTerbit }}</li>
-                        <li>Bahasa</li>
-                        <li>{{ $buku->bahasa }}</li>
-                    </ul>
-                    <ul>
-                        <li>Penerbit</li>
-                        <li>{{ $buku->namaPenerbit }}</li>
-                        <li>Berat</li>
-                        <li>(berat)</li>
-                        <li>Panjang</li>
-                        <li>(panjang)</li>
-                        <li>Lebar</li>
-                        <li>(Lebar)</li>
-                    </ul>
-                </div>
-            </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+    <div class="text-center">
+        <h1 class="text-2xl font-bold mb-4">Informasi Buku</h1>
+        <div class="relative w-full pt-[150%] bg-gray-200 rounded-lg overflow-hidden mb-4" style="background-image: url('{{ Storage::url($buku->fotoSampul) }}'); background-size: cover; background-position: center;">
+            <!-- Optional: Add an overlay or any other content inside this div -->
         </div>
-        <div>
-            <h1>Ingin beli atau Pinjam berapa ?</h1>
-            <h2>Jumlah barang</h2>
-            <h3>(tambah barang)</h3>
-
-            {{-- Tombol buat tambahkan ke keranjang --}}
-            <div class="flex items-center justify-between">
-                <form action="{{ route('keranjang.store', ['idBuku' => $buku->idBuku]) }}" method="POST" style="display: inline;">
-                    @csrf
-                    <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">Tambah ke Keranjang</button>
-                </form>
-            </div>
-
+        <h2 class="text-lg font-semibold">Judul Buku: {{ $buku->judulBuku }}</h2>
+        <h3 class="text-md text-gray-600">Author: {{ $buku->namaPenulis }}</h3>
+        <p class="text-sm text-gray-600">Kategori: {{ $buku->kategori->namaKategori }}</p>
+        <p class="text-sm text-gray-600">Rating: {{ $buku->rating }}</p>
+        <h2 class="text-lg font-bold text-blue-800 mt-4">Harga: Rp. {{ $buku->harga }}</h2>
+        <div class="my-4">
+            <h3 class="text-lg font-semibold">Deskripsi</h3>
+            <p class="text-sm text-gray-600">{{ $buku->sinopsis }}</p>
         </div>
     </div>
-
+    <div>
+        <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-2">Detail</h3>
+            <ul class="grid grid-cols-2 gap-4 text-sm text-gray-600">
+                <li>ISBN</li>
+                <li>{{ $buku->ISBN }}</li>
+                <li>Jumlah Halaman</li>
+                <li>{{ $buku->jumlahHalaman }}</li>
+                <li>Tahun Terbit</li>
+                <li>{{ $buku->tahunTerbit }}</li>
+                <li>Bahasa</li>
+                <li>{{ $buku->bahasa }}</li>
+                <li>Penerbit</li>
+                <li>{{ $buku->namaPenerbit }}</li>
+            </ul>
+        </div>
+        <div class="flex justify-end">
+            <form action="{{ route('keranjang.store', ['idBuku' => $buku->idBuku]) }}" method="POST">
+                @csrf
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Tambah ke Keranjang</button>
+            </form>
+        </div>
+    </div>
 </div>
 @endsection

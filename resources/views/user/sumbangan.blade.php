@@ -14,20 +14,18 @@
                 <thead>
                     <tr class="bg-gray-200">
                         <th class="px-4 py-2">Judul Buku</th>
-                        <th class="px-4 py-2">ISBN</th>
-                        <th class="px-4 py-2">Jumlah Buku</th>
-                        <th class="px-4 py-2">Tanggal Sumbangan</th>
-                        <th class="px-4 py-2">Tanggal Penyerahan</th>
+                        <th class="px-4 py-2">Kategori</th>
+                        <th class="px-4 py-2">Bahasa</th>
+                        <th class="px-4 py-2">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($sumbanganItems as $sumbangan)
                         <tr>
-                            <td class="border px-4 py-2">{{ $sumbangan->buku->judulBuku }}</td>
-                            <td class="border px-4 py-2">{{ $sumbangan->buku->isbn }}</td>
-                            <td class="border px-4 py-2">{{ $sumbangan->jumlah_buku }}</td>
-                            <td class="border px-4 py-2">{{ \Carbon\Carbon::parse($sumbangan->tanggalSumbangan)->format('d F Y') }}</td>
-                            <td class="border px-4 py-2">{{ \Carbon\Carbon::parse($sumbangan->tanggalPenyerahan)->format('d F Y') }}</td>
+                            <td class="border px-4 py-2">{{ $sumbangan->judulBuku }}</td>
+                            <td class="border px-4 py-2">{{ $sumbangan->bahasa }}</td>
+                            <td class="border px-4 py-2">{{ $sumbangan->kategori->namaKategori }}</td>
+                            <td class="border px-4 py-2">{{ $sumbangan->status }}</td>
                         </tr>
                     @endforeach
                 </tbody>

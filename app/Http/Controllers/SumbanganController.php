@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\Buku;
+use App\Models\User;
+use App\Models\Kategori;
 use App\Models\Sumbangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,45 +20,40 @@ class SumbanganController extends Controller
         $userId = Auth::id();
 
         // Eager load the related 'Buku' model and filter donations by the logged-in user
-        $sumbanganItems = Sumbangan::with('buku')->where('id', $userId)->get();
+        $sumbanganItems = Sumbangan::where('id', $userId)->get();
 
         return view('user.sumbangan', compact('sumbanganItems'));
     }
 
     public function create()
     {
-        return view('user.form_sumbangan');
+        $categories = Kategori::all();
+        return view('user.form_sumbangan', compact('categories'));
     }
 
     public function store(Request $request)
     {
+        // Validasi request
         $request->validate([
             'judulBuku' => 'required|string|max:255',
-            'isbn' => 'required|string|max:13',
-            'jumlah_buku' => 'required|integer',
-            'tanggalPenyerahan' => 'required|date',
+            'bahasa' => 'required|string|max:255',
+            'kategori' => 'required|exists:kategori,idKategori',
         ]);
 
-        // Check if the book already exists in the 'buku' table
-        $buku = Buku::where('isbn', $request->isbn)->first();
+        // Mengambil ID user yang sedang login
+        $userId = Auth::id();
 
-        if (!$buku) {
-            // If the book does not exist, create a new book entry
-            $buku = Buku::create([
-                'judulBuku' => $request->judulBuku,
-                'isbn' => $request->isbn,
-            ]);
-        }
+        // Buat instance baru dari model Sumbangan
+        $sumbangan = new Sumbangan();
+        $sumbangan->judulBuku = $request->judulBuku;
+        $sumbangan->bahasa = $request->bahasa;
+        $sumbangan->idKategori = $request->kategori;
+        $sumbangan->id = $userId; // Pastikan ini sesuai dengan skema tabel
 
-        // Add the donation details to the 'sumbangan' table
-        Sumbangan::create([
-            'idBuku' => $buku->idBuku,
-            'id' => auth()->id(),
-            'jumlah_buku' => $request->jumlah_buku,
-            'tanggalSumbangan' => now(),
-            'tanggalPenyerahan' => $request->tanggalPenyerahan,
-        ]);
+        // Simpan data sumbangan ke database
+        $sumbangan->save();
 
-        return redirect()->route('sumbangan')->with('success', 'Sumbangan berhasil ditambahkan.');
+        // Kembalikan ke halaman sebelumnya atau halaman tertentu
+        return redirect()->route('user.sumbangan')->with('success', 'Sumbangan berhasil ditambahkan.');
     }
 }
