@@ -26,10 +26,10 @@
             <p class="text-gray-700">Penulis: {{ $b->namaPenulis }}</p>
             <p class="text-gray-700">Kategori: {{ $b->Kategori->namaKategori }}</p>
 
+            <p class="text-gray-700">Rating: {{ $b->rating }}</p> <!-- Menampilkan status -->
             <p class="text-gray-700">Status: {{ $b->status }}</p> <!-- Menampilkan status -->
 
             <!-- Tambahkan tombol ulasan yang mengarahkan ke halaman ulasan buku -->
-            <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 inline-block">Ulasan</a>
         </div>
         @endforeach
     </div>
