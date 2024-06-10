@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
+use App\Models\Ulasan;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 
@@ -55,14 +56,24 @@ class ListBukuController extends Controller
     return $this->belongsTo(Kategori::class, 'idKategori');
 }
 
-    public function getById($id)
-    {
-        $buku = Buku::with('kategori')->find($id);
-        if ($buku) {
-            return view('user.detailBuku')->with('buku', $buku);
-        } else {
-            return response()->json(['message' => 'Buku tidak ditemukan'], 404);
-        }
+public function getById($id)
+{
+    // Fetch the book details with its category
+    $buku = Buku::with('kategori')->find($id);
+    
+    if ($buku) {
+        // Fetch reviews specific to this book and join with users table to get user names
+        $ulasans = Ulasan::where('idBuku', $id)
+                         ->join('users', 'ulasan.id', '=', 'users.id')
+                         ->select('ulasan.*', 'users.name as name')
+                         ->get();
+
+        // Return the view with the book and its reviews
+        return view('user.detailBuku', compact('buku', 'ulasans'));
+    } else {
+        // Return a JSON response if the book is not found
+        return response()->json(['message' => 'Buku tidak ditemukan'], 404);
     }
+}
 
 }
