@@ -6,21 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Ulasan;
 use App\Models\Buku;
 use App\Models\Kategori;
+// use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
 
-class ListUlasanController extends Controller
+class UlasanController extends Controller
 {
-    public function index()
-    {
-        // Retrieve all reviews
-        // Retrieve all reviews with associated book information
-        $ulasans = Ulasan::join('buku', 'ulasan.idBuku', '=', 'buku.idBuku')
-                     ->join('users', 'ulasan.id', '=', 'users.id')
-                     ->select('ulasan.*', 'buku.judulBuku as judulBuku', 'users.name as name')
-                     ->get();
-
-        // return response()->json($ulasans);
-        return view('user.ulasan')->with('ulasans', $ulasans);
-    }
 
     public function filterByRating(Request $request)
     {
@@ -46,29 +36,25 @@ class ListUlasanController extends Controller
         return response()->json($ulasans);
     }
 
-    public function storeUlasan(Request $request)
+    public function store(Request $request, $idBuku)
     {
         // Validate the request data
         $request->validate([
-            'id' => 'required|exists:users,id',
-            'idBuku' => 'required|exists:buku,idBuku',
-            'rating' => 'required|numeric|min:0|max:10',
             'komentar' => 'required|string',
-            'tanggalUlasan' => 'required|date',
+            'rating' => 'required|integer|min:1|max:5',
         ]);
 
-        // Create a new review instance
+        // Create a new review
         $ulasan = new Ulasan();
-        $ulasan->id = $request->input('id');
-        $ulasan->idBuku = $request->input('idBuku');
-        $ulasan->rating = $request->input('rating');
+        $ulasan->idBuku = $idBuku;
+        $ulasan->id = Auth::id(); // Assume user is logged in and we have user ID
         $ulasan->komentar = $request->input('komentar');
-        $ulasan->tanggalUlasan = $request->input('tanggalUlasan');
-
-        // Save the review
+        $ulasan->rating = $request->input('rating');
+        $ulasan->tanggalUlasan = now();
         $ulasan->save();
 
-        // Return the newly created review as JSON response
-        return response()->json($ulasan, 201);
+        // Redirect back to the book detail page
+        return redirect()->route('detailBuku', ['idBuku' => $idBuku])->with('success', 'Ulasan berhasil ditambahkan.');
+        }
     }
-}
+
