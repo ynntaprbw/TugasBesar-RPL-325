@@ -17,6 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('idKategori');
             $table->string('judulBuku', 100);
             $table->string('bahasa', 45);
+            $table->enum('status', ['Menunggu', 'Telah Diterima', 'Ditolak'])->default('Menunggu');
+            $table->timestamps();
 
             $table->foreign('id')->references('id')->on('users');
             $table->foreign('idKategori')->references('idKategori')->on('kategori');

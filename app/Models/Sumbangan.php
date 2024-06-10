@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Sumbangan extends Model
 {
     protected $table = 'sumbangan';
-    protected $primaryKey = 'idSumbangan';
+    protected $primaryKey = 'idBukuSumbangan';
+    public $timestamps = false;
 
     protected $fillable = [
-        'jumlah_buku',
-        'tanggalSumbangan',
-        'tanggalPenyerahan',
+        'judulBuku',
+        'bahasa',
     ];
 
     public function user()
@@ -21,8 +21,8 @@ class Sumbangan extends Model
         return $this->belongsTo(User::class, 'id');
     }
 
-    public function buku()
+    public function kategori()
     {
-        return $this->belongsTo(Buku::class, 'idBuku');
+        return $this->belongsTo(Kategori::class, 'idKategori');
     }
 }
