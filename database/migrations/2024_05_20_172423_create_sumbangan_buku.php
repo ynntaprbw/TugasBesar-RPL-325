@@ -12,15 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sumbangan', function (Blueprint $table) {
-            $table->id('idSumbangan');
+            $table->id('idBukuSumbangan');
             $table->uuid('id');
-            $table->unsignedBigInteger('idBuku');
-            $table->integer('jumlah_buku');
-            $table->dateTime('tanggalSumbangan');
-            $table->dateTime('tanggalPenyerahan');
+            $table->unsignedBigInteger('idKategori');
+            $table->string('judulBuku', 100);
+            $table->string('bahasa', 45);
 
             $table->foreign('id')->references('id')->on('users');
-            $table->foreign('idBuku')->references('idBuku')->on('buku');
+            $table->foreign('idKategori')->references('idKategori')->on('kategori');
             
         });
     }
