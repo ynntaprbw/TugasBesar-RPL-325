@@ -24,9 +24,6 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                             <tr>
                                 <th scope="col" class="py-3 jus"></th>
-                                <th scope="col" class="px-16 py-3">
-                                    <span class="sr-only">Foto Buku</span>
-                                </th>
                                 <th scope="col" class="px-6 py-3">
                                     Judul Buku
                                 </th>
@@ -54,9 +51,6 @@
                                 </div>
                             </td>
                             {{-- Foto buku --}}
-                            <td class="p-4">
-                                <img src="{{ $item->buku->fotoSampul }}" class="w-16 md:w-32 max-w-full max-h-full" alt="Apple Watch">
-                            </td>
                             <td class="px-6 py-4 font-semibold text-gray-900 ">
                                 {{ $item->buku->judulBuku }}
                             </td>

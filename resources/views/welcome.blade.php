@@ -5,36 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Librartur - Landing Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-slate-900">
+<body class="bg-gray-900">
 
-
-    <section class="bg-center bg-no-repeat bg-[url('https://t3.ftcdn.net/jpg/06/76/98/70/360_F_676987000_E2MmZqzNy39Ec9PSRW0k7IyOfGtj0IXX.jpg')] bg-gray-700 bg-blend-multiply">
-        <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Selamat Datang di Aplikasi Kami</h1>
-            <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Silakan login atau daftar untuk melanjutkan</p>
-            @if (Route::has('login'))
-                <div class="flex justify-center items-center mt-4">
-                    <a
-                        href="{{ route('login') }}"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
-                    >
-                        Log in
-                    </a>
+    <section class="bg-cover bg-center bg-no-repeat h-screen flex flex-col justify-center items-center relative overflow-hidden"
+             style="background-image: url('https://www.law.georgetown.edu/environmental-law-review/wp-content/uploads/sites/18/2023/10/Photo-in-a-realistic-style_-Inside-the-renowned-New-York-Public-Library-the-vast-shelves-tell-a-different-tale.-Fewer-books-are-seen-and-in-their-pl-1-1-980x552.jpg');">
+        <div class="absolute inset-0 bg-black opacity-50 z-0"></div>
+        <div class="relative z-10 text-center text-white">
+            <h1 class="mb-4 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none">Selamat Datang di Aplikasi Kami</h1>
+            <p class="mb-8 text-lg md:text-xl font-normal text-gray-300 px-6 md:px-12 lg:px-24">Silakan login atau daftar untuk melanjutkan</p>
+            <div class="flex justify-center items-center">
+                @if (Route::has('login'))
+                    <a href="{{ route('login') }}"
+                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Log in</a>
 
                     @if (Route::has('register'))
-                        <a
-                            href="{{ route('register') }}"
-                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                        >
-                            Register
-                        </a>
+                        <a href="{{ route('register') }}"
+                           class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Register</a>
                     @endif
-                </div>
-            @endif
+                @endif
+            </div>
         </div>
     </section>
+
 </body>
 </html>

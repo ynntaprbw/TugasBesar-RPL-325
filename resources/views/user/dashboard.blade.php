@@ -43,11 +43,6 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="{{ request()->is('#') ? 'bg-indigo-600 text-white' : '' }} flex items-center p-2 text-gray-500 rounded-lg hover:text-white hover:bg-gray-100 dark:hover:bg-indigo-600 group">
-                            <span>Komunitas</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{ route('artikel') }}" class="{{ request()->is('artikel') ? 'bg-indigo-600 text-white' : '' }} flex items-center p-2 text-gray-500 rounded-lg hover:text-white hover:bg-gray-100 dark:hover:bg-indigo-600 group">
                             <span>Artikel</span>
                         </a>

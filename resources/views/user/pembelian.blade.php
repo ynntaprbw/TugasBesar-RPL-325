@@ -77,7 +77,12 @@
                     <td class="px-6 py-4">{{ $pembelian->tanggalPembayaran->format('d F Y') }}</td>
                     <td class="px-6 py-4">{{ $pembelian->total_bayar }}</td>
                     <td class="px-6 py-4">{{ $pembelian->metodePembayaran }}</td>
-                    <td class="px-6 py-4">{{ $pembelian->statusPembayaran }}</td>
+                    <td class="px-6 py-4">
+                        @if ($pembelian->statusPembayaran == 'Belum Lunas')
+                        <span  class="  text-red-600">Belum Lunas</span>
+                        @elseif ($pembelian->statusPembayaran == 'Lunas')
+                            <span class="text-green-600">Lunas</span>
+                        @endif</td>
                     <td class="px-6 py-4">{{ $pembelian->statusPengambilan }}</td>
                 </tr>
             @endforeach
