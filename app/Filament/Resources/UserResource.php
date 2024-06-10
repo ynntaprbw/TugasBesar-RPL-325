@@ -31,7 +31,6 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make('name')->label('Name'),
                 TextInput::make('email')->label('Email'),
-                TextInput::make('password')->label('Password')->type('password'),
                 Select::make('role')->label('Role')
                     ->options([
                         'user' => 'User',

@@ -4,6 +4,7 @@ namespace App\Filament\Widgets;
 
 use App\Models\Pembelian;
 use App\Models\Peminjaman;
+use App\Models\Sumbangan;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Flowframe\Trend\Trend;
@@ -42,6 +43,9 @@ class Laporan extends BaseWidget
                 ->description('Jumlah Peminjaman')
                 ->chart($peminjamanData->map(fn (TrendValue $value) => $value->aggregate)->toArray())
                 ->color('success'),
+            stat::make('Sumbangan', Sumbangan::query()->count())
+                ->description('Jumlah Sumbangan')
+            
         ];
     }
 

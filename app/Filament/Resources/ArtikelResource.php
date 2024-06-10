@@ -31,9 +31,9 @@ class ArtikelResource extends Resource
                     TextInput::make('id'),
                     FileUpload::make('media')
                         ->label('Media')
-                        ->disk('public') // Ensure the file is saved on the public disk
-                        ->directory('uploads/media') // Specify the directory
-                        ->visibility('public'), // Set visibility to public
+                        ->disk('public')
+                        ->directory('uploads/media')
+                        ->visibility('public'),
                     TextInput::make('judulArtikel')->label('Judul Artikel'),
                     TextInput::make('sumberArtikel')->label('Sumber Artikel'),
                     TextInput::make('thumbnail')->label('Thumbnail'),
@@ -50,7 +50,7 @@ class ArtikelResource extends Resource
                 TextColumn::make('id'),
                 ImageColumn::make('media')
                     ->label('Media')
-                    ->disk('public'), // Ensure the image is retrieved from the public disk
+                    ->disk('public'),
                 TextColumn::make('judulArtikel')->label('Judul Artikel'),
                 TextColumn::make('sumberArtikel')->label('Sumber Artikel'),
                 TextColumn::make('thumbnail')->label('Thumbnail'),

@@ -7,6 +7,7 @@ use Filament\Tables;
 use App\Models\Denda;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\DendaResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\DendaResource\RelationManagers;
+use Filament\Forms\Components\DatePicker;
 
 class DendaResource extends Resource
 {
@@ -25,7 +27,10 @@ class DendaResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('idPeminjaman')->label('ID Peminjaman'),
+                TextInput::make('totalDenda')->label('Total Denda'),
+                DatePicker::make('tanggalBayarDenda')->label('Tanggal Bayar Denda'),
+                TextInput::make('statusDenda')->label('Status Denda'),
             ]);
     }
 
@@ -33,7 +38,6 @@ class DendaResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('idDenda')->label('ID Denda'),
                 TextColumn::make('idPeminjaman')->label('ID Peminjaman'),
                 TextColumn::make('totalDenda')->label('Total Denda'),
                 TextColumn::make('tanggalBayarDenda')->label('Tanggal Bayar Denda'),
@@ -72,3 +76,4 @@ class DendaResource extends Resource
         ];
     }
 }
+

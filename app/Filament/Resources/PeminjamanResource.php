@@ -41,17 +41,10 @@ class PeminjamanResource extends Resource
                 TextInput::make('durasiPeminjaman')->numeric()->label('Durasi Peminjaman'),
                 DateTimePicker::make('batasPengembalian')->label('Batas Pengembalian'),
                 DateTimePicker::make('tanggalPengembalian')->label('Tanggal Pengembalian'),
-                Select::make('statusPeminjaman')->label('Status Peminjaman')
-                    ->options([
-                        'Diproses' => 'Diproses',
-                        'Dipinjam' => 'Dipinjam',
-                        'Dikembalikan' => 'Dikembalikan',
-                    ]),
-                Select::make('statusPengambilan')->label('Status Pengambilan')
-                    ->options([
-                        'Belum Diambil' => 'Belum Diambil',
-                        'Sudah Diambil' => 'Sudah Diambil',
-                    ]),
+                TextInput::make('statusPeminjaman')->label('Status Peminjaman'),  
+                TextInput::make('statusPengambilan')->label('Status Pengambilan')
+                    
+                
             ]);
     }
 

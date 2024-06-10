@@ -36,14 +36,8 @@ class PembelianResource extends Resource
                 TextInput::make('diskon')->label('Diskons'),
                 TextInput::make('total_bayar')->label('Total Bayar'),
                 TextInput::make('metodePembayaran')->label('Metode Pembayaran'),
-                Select::make('statusPembayaran')
-                        ->options([
-                            'statusPembayaran' => 'Lunas',
-                            '' => 'Belum Lunas',
-                            
-                        ])
-                        ->live(),
-                
+                TextInput::make('statusPembayaran')->label('Status Pembayaran')
+                        
                 //
             ]);
     }
