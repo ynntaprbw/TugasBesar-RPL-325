@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 class LaporanPeminjamanChart extends ChartWidget
 {
-    protected static ?string $heading = 'Peminjaman Chart';
+    protected static ?string $heading = 'Trend Peminjaman';
 
     protected function getData(): array
     {

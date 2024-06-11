@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 class LaporanPembelianChart extends ChartWidget
 {
-    protected static ?string $heading = 'Pembelian Chart';
+    protected static ?string $heading = 'Trend Pembelian ';
 
     protected function getData(): array
     {

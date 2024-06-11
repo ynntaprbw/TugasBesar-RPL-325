@@ -16,6 +16,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -56,7 +57,11 @@ class PembelianResource extends Resource
                 
             ])
             ->filters([
-                //
+            
+                SelectFilter::make('statusPembayaran')->options([
+                    'Belum Lunas' => 'Belum Lunas',
+                    'Lunas' => 'Lunas',
+                ])->label('Status'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
