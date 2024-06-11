@@ -1,23 +1,27 @@
 @extends('user.dashboard')
 
 @section('content')
-<div class="container mx-auto p-4">
+<div class="container mx-auto p-4 mt-16"> <!-- Added mt-16 to ensure the container starts below the navbar -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="text-center">
-            <h1 class="text-2xl font-bold mb-4">Informasi Buku</h1>
-            <div class="w-full h-64 bg-cover bg-center mb-4" style="background-image: url('{{ Storage::url($buku->fotoSampul) }}');">
+        <div class="card bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="w-full pt-[150%] bg-gray-200 rounded-lg overflow-hidden mb-4" style="background-image: url('{{ Storage::url($buku->fotoSampul) }}'); background-size: cover; background-position: center;">
+                <!-- Optional: Add an overlay or any other content inside this div -->
             </div>
-            <h2 class="text-lg">Judul Buku: {{ $buku->judulBuku }}</h2>
-            <h3 class="text-md">Author: {{ $buku->namaPenulis }}</h3>
-            <p class="text-sm">Kategori: {{ $buku->kategori->namaKategori }}</p>
-            <p class="text-sm">Rating: {{ $buku->rating }}</p>
-            <h2 class="text-lg">Harga: Rp. {{ $buku->harga }}</h2>
-            <div class="my-4">
-                <h3 class="text-lg">Deskripsi</h3>
-                <p class="text-sm">{{ $buku->sinopsis }}</p>
+            <div class="p-4">
+                <h2 class="text-lg text-center font-bold">{{ $buku->judulBuku }}</h2>
+                <br>
+                <h3 class="text-sm">Author: <span class="font-bold text-blue-600">{{ $buku->namaPenulis }}</span></h3>
+                <br>
+                <p class="text-sm">Kategori: <span class="font-bold text-blue-600">{{ $buku->kategori->namaKategori }}</span></p>
+                <br>
+                <h2 class="text-lg">Harga: <span class="font-bold text-blue-600">Rp. {{ number_format($buku->harga, 0, ',', '.') }}</span></h2>
+                <div class="my-4">
+                    <h3 class="text-lg">Deskripsi</h3>
+                    <p class="text-sm">{{ $buku->sinopsis }}</p>
+                </div>
             </div>
         </div>
-        <div>
+        <div class="card bg-white shadow-md rounded-lg p-4">
             <div>
                 <h3 class="text-lg font-semibold mb-2">Detail</h3>
                 <ul class="grid grid-cols-2 gap-4 mb-6">
@@ -31,21 +35,12 @@
                     <li>{{ $buku->bahasa }}</li>
                     <li class="font-medium">Penerbit</li>
                     <li>{{ $buku->namaPenerbit }}</li>
-                    <li class="font-medium">Berat</li>
-                    <li>{{ $buku->berat }}</li>
-                    <li class="font-medium">Panjang</li>
-                    <li>{{ $buku->panjang }}</li>
-                    <li class="font-medium">Lebar</li>
-                    <li>{{ $buku->lebar }}</li>
                 </ul>
             </div>
             <div class="mb-6">
-                <h3 class="text-lg font-semibold mb-2">Ingin beli atau pinjam berapa?</h3>
-                <h4 class="text-md">Jumlah barang</h4>
-                <p class="text-sm mb-4">Tambah barang</p>
                 <form action="{{ route('keranjang.store', ['idBuku' => $buku->idBuku]) }}" method="POST">
                     @csrf
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Tambah ke Keranjang</button>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Tambah ke Keranjang</button>
                 </form>
             </div>
             <h2 class="text-2xl font-bold mt-6 mb-4">Ulasan</h2>
