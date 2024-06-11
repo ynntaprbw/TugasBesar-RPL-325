@@ -12,8 +12,11 @@ class Sumbangan extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'id',
+        'idKategori',
         'judulBuku',
         'bahasa',
+        'status',
     ];
 
     public function user()

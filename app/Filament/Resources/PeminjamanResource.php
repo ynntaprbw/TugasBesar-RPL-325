@@ -37,6 +37,8 @@ class PeminjamanResource extends Resource
     {
         return $form
             ->schema([
+                TextInput::make('id')->label('ID User'),
+                TextInput::make('idBuku')->label('ID Buku'),
                 DateTimePicker::make('tanggalPeminjaman')->label('Tanggal Peminjaman'),
                 TextInput::make('durasiPeminjaman')->numeric()->label('Durasi Peminjaman'),
                 DateTimePicker::make('batasPengembalian')->label('Batas Pengembalian'),

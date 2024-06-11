@@ -22,10 +22,9 @@ class SumbanganResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('idBukuSumbangan')->label('ID Buku Sumbangan'),
                 TextInput::make('id')->label('ID User'),
-                TextInput::make('idkategori')->label('ID Kategori'),
-                TextInput::make('judukBuku')->label('Judul Buku'),
+                TextInput::make('idKategori')->label('ID Kategori'),
+                TextInput::make('judulBuku')->label('Judul Buku'),
                 TextInput::make('bahasa')->label('Bahasa'),
                 TextInput::make('status')->label('Status'),
             ]);
@@ -36,9 +35,8 @@ class SumbanganResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('idBukuSumbangan')->label('ID Buku Sumbangan'),
-                TextColumn::make('id')->label('ID User'),
-                TextColumn::make('idkategori')->label('ID Buku'),
-                TextColumn::make('judukBuku')->label('Judul Buku'),
+                TextColumn::make('idKategori')->label('ID Buku'),
+                TextColumn::make('judulBuku')->label('Judul Buku'),
                 TextColumn::make('bahasa')->label('Bahasa'),
                 TextColumn::make('status')->label('Status'),
             ])

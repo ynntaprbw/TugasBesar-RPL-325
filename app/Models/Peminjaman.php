@@ -11,6 +11,8 @@ class Peminjaman extends Model
     protected $primaryKey = 'idPeminjaman';
 
     protected $fillable = [
+        'id',
+        'idBuku',
         'tanggalPeminjaman',
         'durasiPeminjaman',
         'batasPengembalian',

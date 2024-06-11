@@ -16,6 +16,7 @@ use App\Filament\Resources\DendaResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\DendaResource\RelationManagers;
 use Filament\Forms\Components\DatePicker;
+use Filament\Tables\Columns\TextInputColumn;
 
 class DendaResource extends Resource
 {
@@ -28,6 +29,8 @@ class DendaResource extends Resource
         return $form
             ->schema([
                 TextInput::make('idPeminjaman')->label('ID Peminjaman'),
+                TextInput::make('id')->label('ID')
+                ->required(),
                 TextInput::make('totalDenda')->label('Total Denda'),
                 DatePicker::make('tanggalBayarDenda')->label('Tanggal Bayar Denda'),
                 TextInput::make('statusDenda')->label('Status Denda'),
@@ -38,7 +41,7 @@ class DendaResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('idPeminjaman')->label('ID Peminjaman'),
+                TextColumn::make('idDenda')->label('ID Denda'),
                 TextColumn::make('totalDenda')->label('Total Denda'),
                 TextColumn::make('tanggalBayarDenda')->label('Tanggal Bayar Denda'),
                 TextColumn::make('statusDenda')->label('Status Denda'),
